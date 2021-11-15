@@ -1,0 +1,39 @@
+<app-separateur titre="Lemka - Aterlier de couture" sousTitre="nos divers services"></app-separateur>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-lg-4 item" *ngFor="let feature of features">
+      <app-feature [feature]="feature"></app-feature>
+    </div>
+  </div>
+</div>
+
+<app-separateur titre="Nouveaux produits" sousTitre="nos tous derniers produits publiés"></app-separateur>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let item of [].constructor(8); let i = index" class="col-sm-6 col-lg-3 mb-2">
+      <app-product-card-two></app-product-card-two>
+    </div>
+  </div>
+</div>
+
+<app-separateur titre="Produits populaires" sousTitre="Nos produits les plus populaires"></app-separateur>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let item of [].constructor(4); let i = index" class="col-sm-6 col-lg-3 mb-3">
+      <app-product-card-two></app-product-card-two>
+    </div>
+  </div>
+</div>
+
+<app-separateur titre="Témoignages" sousTitre="Ils nous font confiance"></app-separateur>
+
+<div class="container container-fluid">
+  <div class="row">
+    <div *ngFor="let item of [].constructor(4); let i = index" class="col-lg-6">
+      <app-temoignage></app-temoignage>
+    </div>
+  </div>
+</div>

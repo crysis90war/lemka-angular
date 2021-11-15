@@ -1,0 +1,52 @@
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.nav-shadow {
+  -webkit-box-shadow: 0 10px 10px -5px rgba(190, 190, 190, 0.5);
+  box-shadow: 0 10px 10px -5px rgba(190, 190, 190, 0.5);
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  -webkit-animation: .95s ease-in-out 0s normal none 1 running fadeInDown;
+  animation: .95s ease-in-out 0s normal none 1 running fadeInDown;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.navbar.colored {
+  background: #F1F1F1;
+  background: -webkit-linear-gradient(to right, #B4A8BF, #F1F1F1);
+  background: linear-gradient(to right, #B4A8BF, #F1F1F1);
+}
+
+.nav-link {
+  &:hover {
+    color: #79648F !important;
+  }
+}
+
+.active {
+  color: purple !important;
+}
