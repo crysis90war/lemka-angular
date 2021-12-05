@@ -1,0 +1,13 @@
+<div class="container my-5">
+
+  <h1>Demo 02</h1>
+
+  <!-- app.component.html -->
+  <file-pond #myPond [options]="pondOptions" [files]="pondFiles" (onInit)="pondHandleInit()"
+    (onAddfile)="pondHandleAddFile($event)" (onActivatefile)="pondHandleActivateFile($event)"
+    (onRemovefile)="pondHandleRemoveFile($event)">
+  </file-pond>
+
+  <button (click)="uploadFiles()" class="btn btn-secondary">Submit</button>
+
+</div>

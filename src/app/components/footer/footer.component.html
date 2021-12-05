@@ -1,0 +1,69 @@
+<footer class="bg-white border-top py-5">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-3">
+        <h5>CONTACT</h5>
+        <h5 class="text-secondary">{{ entreprise.nom }}</h5>
+        <ul class="list-unstyled">
+          <li>TVA:
+            <a href="https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?nummer={{ entreprise.tva.replace('BE', '') }}&actionLu=Recherche"
+              target="_blank" class="link-secondary">
+              {{ entreprise.tva }}
+            </a>
+          </li>
+
+          <li>Tel:
+            <a class="link-secondary" href="tel: {{ entreprise.tel.trim().replace(' ', '').replace('+32', '') }}">
+              {{ entreprise.tel }}
+            </a>
+          </li>
+
+          <li>E-mail:
+            <a class="link-secondary" href="mailto: {{ entreprise.email.trim() }}">
+              {{ entreprise.email }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3">
+        <h5>LÉGALES</h5>
+        <ul class="list-unstyled">
+          <li>
+            <a class="link-secondary" routerLink="legales/politique-de-confidentialite">Politique de confidentialité</a>
+          </li>
+          <li>
+            <a class="link-secondary" routerLink="legales/retours-et-remboursements">Retour et remboursement</a>
+          </li>
+          <li>
+            <a class="link-secondary" routerLink="legales/conditions-generales">Conditions générales</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3">
+        <h5>RESEAUX SOCIAUX</h5>
+        <p class="text-secondary">
+          Suivez-nous sur les réseaux sociaux. Tenez-vous au courant de toutes les activités, nouvelles et plus
+        </p>
+        <!-- Social buttons -->
+        <ul class="list-inline">
+          <ng-container *ngFor="let social of socials">
+            <li class="list-inline-item" *ngIf="social.lien !== null">
+              <a [href]="social.lien" target="_blank"><i class="{{social.icon}}"></i></a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+
+      <div class="col-lg-3">
+        <h5>A PROPOS DE NOUS</h5>
+        <p class="text-secondary text-justify">
+          Text de description a propos court
+        </p>
+      </div>
+
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,13 @@
+<li class="nav-item" [ngClass]="{'dropdown': navItem.children}">
+
+  <a *ngIf="!navItem.children; else ngIfChildren" class="nav-link" routerLink="{{parentUrl}}/{{navItem.url}}"
+    routerLinkActive="active">
+    <i *ngIf="navItem.icon" class="{{ navItem.icon }}"></i>{{navItem.title}}
+  </a>
+
+  <ng-template #ngIfChildren>
+
+    <app-nav-dropdown [navItem]="navItem"></app-nav-dropdown>
+
+  </ng-template>
+</li>

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light border-0 nav-shadow colored"
+  aria-label="Fourth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">
+      <img src="../../../../assets/logo.png" alt="lemka-logo" style="max-width: 150px;">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+      aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="container collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ng-container *ngFor="let navItem of routes">
+          <app-nav-item [navItem]="navItem"></app-nav-item>
+        </ng-container>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+
+          <ng-container *ngIf="!isConnected; else ngIfElse">
+            <app-nav-dropdown [navItem]="authRoute"></app-nav-dropdown>
+          </ng-container>
+
+          <ng-template #ngIfElse>
+            <app-nav-dropdown [navItem]="accountRoute">
+              <li>
+                <input class="dropdown-item" type="button" value="Se déconnecter" (click)="logOut()">
+              </li>
+            </app-nav-dropdown>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

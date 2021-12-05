@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Confections",
+    "description": "Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.",
+    "image": "../../../../assets/confections.jpg"
+  },
+  {
+    "title": "Réparations",
+    "description": "Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.",
+    "image": "../../../../assets/reparation.jpg"
+  },
+  {
+    "title": "Retouches",
+    "description": "Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.",
+    "image": "../../../../assets/retouche.jpg"
+  },
+  {
+    "title": "Tissus",
+    "description": "Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.",
+    "image": "../../../../assets/tissus.jpg"
+  },
+  {
+    "title": "Demander devis",
+    "description": "Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.",
+    "image": "../../../../assets/devis.jpg"
+  },
+  {
+    "title": "Rendez-vous",
+    "description": "Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.",
+    "image": "../../../../assets/rendezvous.jpg"
+  }
+]

@@ -1,0 +1,89 @@
+[
+  {
+    "title": "Accueil",
+    "url": "home",
+    "isVisible": true,
+    "icon": null,
+    "children": null
+  },
+  {
+    "title": "Horaire",
+    "url": "horaire",
+    "isVisible": true,
+    "icon": null,
+    "children": null
+  },
+  {
+    "title": "À propos",
+    "url": "a-propos",
+    "isVisible": true,
+    "icon": null,
+    "children": null
+  },
+  {
+    "title": "Contact",
+    "url": "contact",
+    "isVisible": true,
+    "icon": null,
+    "children": null
+  },
+  {
+    "title": "Demo",
+    "url": "demo",
+    "isVisible": true,
+    "icon": null,
+    "children": [
+      {
+        "title": "Demo 01",
+        "url": "demo-01",
+        "isVisible": true,
+        "icon": null,
+        "children": null
+      },
+      {
+        "title": "Demo 02",
+        "url": "demo-02",
+        "isVisible": true,
+        "icon": null,
+        "children": null
+      }
+    ]
+  },
+  {
+    "title": "",
+    "url": "auth",
+    "isVisible": true,
+    "icon": "fa-solid fa-user",
+    "children": [
+      {
+        "title": "S'identifier",
+        "url": "login",
+        "isVisible": true,
+        "icon": null,
+        "children": null
+      },
+      {
+        "title": "S'enregistrer",
+        "url": "register",
+        "isVisible": true,
+        "icon": null,
+        "children": null
+      }
+    ]
+  },
+  {
+    "title": "Mon compte",
+    "url": "account",
+    "isVisible": true,
+    "icon": null,
+    "children": [
+      {
+        "title": "Profil",
+        "url": "profil",
+        "isVisible": true,
+        "icon": null,
+        "children": null
+      }
+    ]
+  }
+]

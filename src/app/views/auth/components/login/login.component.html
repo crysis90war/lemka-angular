@@ -1,0 +1,43 @@
+<div class="container my-5 d-flex justify-content-center">
+  <div class="card pt-5 px-3 pb-3 w-50 p-shadow-24">
+    <div class="card-title">
+      <h2 class="text-center">Identifiez-vous</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="floatingInput" formControlName="email"
+            [ngClass]="inputStatus('email')" />
+          <label for="floatingInput">adresse e-email</label>
+        </div>
+
+        <div class="form-floating">
+          <input type="password" class="form-control bonjour" id="floatingPassword" formControlName="password"
+            [ngClass]="inputStatus('password')" />
+          <label for="floatingPassword">mot de passe</label>
+
+          <div class="invalid-feedback">
+            Looks good!
+          </div>
+        </div>
+
+        <p class="text-end">
+          <a routerLink="/auth/register" class="text-muted">
+            Vous avez oublié votre mot de passe ?
+          </a>
+        </p>
+
+        <button type="submit" class="btn btn-primary w-100 my-3" [disabled]="loginForm.invalid">
+          S'IDENTIFIER
+        </button>
+
+        <p class="text-center">
+          <a routerLink="/auth/register" class="text-muted text-center">
+            Créez votre compte
+          </a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="container">
+  <ng-container *ngIf="utilisateur;else ngNotUser">
+
+    <app-card [title]="utilisateur.username">
+      <div class="row">
+        <div class="col-lg-7">
+          <h3>{{ fullName }}</h3>
+          <div>
+            <span class="badge bg-primary">{{utilisateur.role}}</span>
+          </div>
+
+          <hr>
+
+          <div>
+            <span class="mr-2"><i class="far fa-envelope"></i></span>
+            <span> {{ utilisateur.email }}</span>
+          </div>
+
+          <div *ngIf="utilisateur.tel">
+            <span class="mr-2"><i class="fas fa-phone"></i></span>
+            <span> {{ utilisateur.tel }}</span>
+          </div>
+
+          <div *ngIf="utilisateur.genre">
+            <span class="mr-2"><i class="fas fa-venus-mars"></i></span>
+            <span> {{ utilisateur.genre.nom }}</span>
+          </div>
+
+          <hr>
+
+          <div>
+            <span><i class="fas fa-home mr-2"></i></span>
+            <a *ngIf="!utilisateur.adresse;else notadresse" routerLink="adresse/add"><ins>Ajouter une
+                adresse</ins></a>
+            <ng-template #notadresse>
+              <a #notadresse> Modifier l'adresse</a>
+            </ng-template>
+          </div>
+
+          <div class="mt-2" *ngIf="utilisateur.adresse">
+            <span>{{ utilisateur.adresse.rue }}, {{ utilisateur.adresse.numero }} {{ utilisateur.adresse.boite
+              }}</span><br>
+            <span>{{ utilisateur.adresse.codePostal }} - {{ utilisateur.adresse.ville }}Code postal - Ville</span><br>
+            <span>Pays</span>
+          </div>
+
+          <hr>
+
+          <button routerLink="" class="btn btn-outline-primary my-3">
+            Modifier profil
+          </button>
+        </div>
+
+        <div class="col-lg-5">
+          <!-- <img [src]="utilisateur.image" class="h-100 rounded"> -->
+
+          <div>
+            <p-image [src]="utilisateur.image ? utilisateur.image : 'assets/nocontent.png'" alt="Image" [preview]="true" width="100%">
+              <ng-template pTemplate="indicator">
+                Indicator Content
+              </ng-template>
+            </p-image>
+          </div>
+
+          <div>
+            <button id="toggle-btn" class="btn btn-light w-100">
+              Modifier photo
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between mt-5">
+        <span><small>Membre depuis {{ utilisateur.createdAt }}</small></span>
+        <span><small>Dernière connexion {{ utilisateur.lastLogin }}</small></span>
+        <span><small>Dernière modification {{ utilisateur.updatedAt }}</small></span>
+      </div>
+    </app-card>
+
+  </ng-container>
+
+  <ng-template #ngNotUser>
+    <p>User Not Set Yet</p>
+  </ng-template>
+</div>

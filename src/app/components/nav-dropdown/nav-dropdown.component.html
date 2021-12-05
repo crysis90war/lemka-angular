@@ -1,0 +1,24 @@
+<a class="nav-link dropdown-toggle" href="" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+  <i *ngIf="navItem.icon" class="{{ navItem.icon }}"></i>{{ navItem.title }}
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="dropdown">
+
+  <ng-container *ngFor="let navItemChild of navItem.children">
+
+    <li>
+      <a class="dropdown-item" routerLink="{{navItem.url}}/{{navItemChild.url}}" routerLinkActive="active">
+        {{navItemChild.title}}
+        <i *ngIf="navItemChild.icon" class="{{ navItem.icon }}"></i>
+      </a>
+    </li>
+
+    <ng-content></ng-content>
+
+    <!-- <li *ngIf="navItem.title === 'Mon compte'">
+      <input class="dropdown-item" type="button" value="Se déconnecter" (click)="logOut()">
+    </li> -->
+
+  </ng-container>
+
+</ul>

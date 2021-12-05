@@ -1,0 +1,27 @@
+[
+  {
+    "nom": "website",
+    "lien": "https://www.lemka.be/",
+    "icon": "fas fa-globe fa-lg"
+  },
+  {
+    "nom": "facebook",
+    "lien": "https://www.facebook.com/couturelemka/",
+    "icon": "fab fa-facebook fa-lg"
+  },
+  {
+    "nom": "instagram",
+    "lien": "https://www.instagram.com/couture_lemka/",
+    "icon": "fab fa-instagram fa-lg"
+  },
+  {
+    "nom": "linkedin",
+    "lien": null,
+    "icon": "fab fa-linkedin fa-lg"
+  },
+  {
+    "nom": "twitter",
+    "lien": null,
+    "icon": "fab fa-twitter fa-lg"
+  }
+]

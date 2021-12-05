@@ -1,96 +1,16 @@
 {
-  "nom": "Lemka - Atelier de couture ",
-  "tva": "BE0650894447 ",
-  "email": "soulim2003@hotmail.com ",
+  "nom": "Lemka - Atelier de couture",
+  "tva": "BE0650894447",
+  "email": "soulim2003@hotmail.com",
   "tel": "+32 0472894621",
   "a_propos_court": "Atelier de couture proposant la confection de vêtements sur mesure, la retouche, de même adapter le vêtement à la personne désireuse et enfin la réparation sur une vaste gamme de tissus.",
-  "a_propos_long": "L’atelier de couture \\\"Lemka\\\" vous offre ses services de couture sur mesure avec plus de 15 ans d’expérience dans la métier.\\nAprès la confection de divers vêtements et costumes, après de nombreuses retouches, réparations et plus encore pour des entreprises spécialisées reconnues.\\nNous serions ravis de mettre tout notre savoir à votre disposition pour un travail de qualité autant pour les particuliers que pour les professionnels.\\n\\nVous pouvez voir nos réalisations depuis la recherche ou sur notre page Facebook ou Instagram.\\n\\nConsultez nos tarifs, pour toutes demandes supplémentaires, vous pouvez vous inscrire et composer une demande de devis, prendre un rendez-vous en ligne. Ou contactez-nous par téléphone, par mail ou via notre section contact, nous mettrons tout en œuvre pour réaliser vos demandes.\\n\\nQue propose donc Lemka Couture ?\\n    - Confection\\n    - Retouche\\n    - Réparation\\n\\nBonne visite.",
+  "a_propos_long": "L’atelier de couture \"Lemka\" vous offre ses services de couture sur mesure avec plus de 15 ans d’expérience dans la métier.\nAprès la confection de divers vêtements et costumes, après de nombreuses retouches, réparations et plus encore pour des entreprises spécialisées reconnues.\nNous serions ravis de mettre tout notre savoir à votre disposition pour un travail de qualité autant pour les particuliers que pour les professionnels.\n\nVous pouvez voir nos réalisations depuis la recherche ou sur notre page Facebook ou Instagram.\n\nConsultez nos tarifs, pour toutes demandes supplémentaires, vous pouvez vous inscrire et composer une demande de devis, prendre un rendez-vous en ligne. Ou contactez-nous par téléphone, par mail ou via notre section contact, nous mettrons tout en œuvre pour réaliser vos demandes.\n\nQue propose donc Lemka Couture ?\n    - Confection\n    - Retouche\n    - Réparation\n\nBonne visite.",
   "adresse": {
     "pays": "Belgique",
     "ville": "Lembeek",
-    "code_postal": "1502",
+    "codePostal": "1502",
     "rue": "Arthur Puesstraat",
     "numero": "89",
     "boite": ""
-  },
-  "socials": [
-    {
-      "nom": "website",
-      "lien": "https://www.lemka.be/"
-    },
-    {
-      "nom": "facebook",
-      "lien": "https://www.facebook.com/couturelemka/"
-    },
-    {
-      "nom": "instagram",
-      "lien": "https://www.instagram.com/couture_lemka/"
-    },
-    {
-      "nom": "linkedin",
-      "lien": ""
-    },
-    {
-      "nom": "twitter",
-      "lien": ""
-    }
-  ],
-  "horaires": [
-    {
-      "jour": "Lundi",
-      "jour_semaine": 0,
-      "heure_ouverture": "10:00",
-      "heure_fermeture": "17:00",
-      "sur_rdv": 0,
-      "est_ferme": 1
-    },
-    {
-      "jour": "Mardi",
-      "jour_semaine": 1,
-      "heure_ouverture": "10:00",
-      "heure_fermeture": "17:00",
-      "sur_rdv": 0,
-      "est_ferme": 1
-    },
-    {
-      "jour": "Mercredi",
-      "jour_semaine": 2,
-      "heure_ouverture": null,
-      "heure_fermeture": null,
-      "sur_rdv": 0,
-      "est_ferme": 1
-    },
-    {
-      "jour": "Jeudi",
-      "jour_semaine": 3,
-      "heure_ouverture": null,
-      "heure_fermeture": null,
-      "sur_rdv": 0,
-      "est_ferme": 1
-    },
-    {
-      "jour": "Vendredi",
-      "jour_semaine": 4,
-      "heure_ouverture": null,
-      "heure_fermeture": null,
-      "sur_rdv": 0,
-      "est_ferme": 1
-    },
-    {
-      "jour": "Samedi",
-      "jour_semaine": 5,
-      "heure_ouverture": "10:00",
-      "heure_fermeture": "16:00",
-      "sur_rdv": 1,
-      "est_ferme": 0
-    },
-    {
-      "jour": "Dimanche",
-      "jour_semaine": 6,
-      "heure_ouverture": null,
-      "heure_fermeture": null,
-      "sur_rdv": 0,
-      "est_ferme": 1
-    }
-  ]
+  }
 }
