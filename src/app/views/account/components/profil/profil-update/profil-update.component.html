@@ -1,0 +1,192 @@
+<div class="container">
+  <app-card title="Modifier profile">
+    <!-- region Utilisateur Form -->
+    <div class="card border-0 shadow p-3 bg-white rounded mb-5">
+      <div class="card-title">Profil</div>
+      <div class="card-body">
+
+        <form [formGroup]="utilisateurForm" (ngSubmit)="submitUtilisateur()">
+          <div class="row mb-3">
+            <div class="col-lg-4">
+              <div class="form-floating has-validation">
+                <input type="text" class="form-control" id="floatingInputUsername" placeholder="Belgique"
+                       formControlName="username"
+                       [ngClass]="statusInput(utilisateurControl('username'), utilisateurSubmitted)">
+                <label for="floatingInputUsername">Username*</label>
+
+                <div
+                  *ngIf="(utilisateurForm.controls['username'].touched || utilisateurSubmitted) && utilisateurForm.controls['username'].invalid"
+                  class="invalid-feedback">
+                  <div *ngIf="utilisateurControl('username', 'required')">username requis</div>
+                  <div *ngIf="utilisateurControl('username', 'maxlength')">Maximum 20 caractères permis.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-floating has-validation">
+                <input type="text" class="form-control" id="floatingInputTel" placeholder="tel"
+                       formControlName="tel"
+                       [ngClass]="statusInput(utilisateurControl('tel'), utilisateurSubmitted)">
+                <label for="floatingInputTel">Tel</label>
+
+                <div
+                  *ngIf="(utilisateurForm.controls['tel'].touched || utilisateurSubmitted) && utilisateurForm.controls['tel'].invalid"
+                  class="invalid-feedback">
+                  <div *ngIf="utilisateurControl('tel', 'maxlength')">Maximum 20 caractères permis.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-lg-4">
+              <div class="form-floating has-validation">
+                <input type="text" class="form-control" id="floatingInputPrenom" placeholder="prenom"
+                       formControlName="prenom"
+                       [ngClass]="statusInput(utilisateurControl('prenom'), utilisateurSubmitted)">
+                <label for="floatingInputPrenom">Prénom</label>
+
+                <div
+                  *ngIf="(utilisateurForm.controls['prenom'].touched || utilisateurSubmitted) && utilisateurForm.controls['prenom'].invalid"
+                  class="invalid-feedback">
+                  <div *ngIf="utilisateurControl('prenom', 'maxlength')">Maximum 50 caractères permis.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-floating has-validation">
+                <input type="text" class="form-control" id="floatingInputNom" placeholder="nom"
+                       formControlName="nom"
+                       [ngClass]="statusInput(utilisateurControl('nom'), utilisateurSubmitted)">
+                <label for="floatingInputNom">Nom</label>
+
+                <div
+                  *ngIf="(utilisateurForm.controls['nom'].touched || utilisateurSubmitted) && utilisateurForm.controls['nom'].invalid"
+                  class="invalid-feedback">
+                  <div *ngIf="utilisateurControl('nom', 'maxlength')">Maximum 50 caractères permis.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelectGenre" aria-label="Floating label select example"
+                        formControlName="genreId">
+                  <option selected></option>
+                  <ng-container *ngFor="let genre of genres">
+                    <option [value]="genre.id">{{ genre.nom }}</option>
+                  </ng-container>
+                </select>
+                <label for="floatingSelectGenre">Genre</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="submit" class="btn btn-outline-primary">Modifier</button>
+            <button type="reset" class="btn btn-outline-danger">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- endregion -->
+
+    <!-- region Adresse form -->
+    <div class="card border-0 shadow p-3 bg-white rounded mb-5">
+      <div class="card-title">Adresse</div>
+      <div class="card-body">
+        <form [formGroup]="adresseForm" (ngSubmit)="submitAdresse()">
+          <div class="row mb-3">
+            <div class="col-lg-4">
+              <div class="form-floating has-validation">
+                <input type="text" class="form-control" id="floatingInputPays" placeholder="Belgique"
+                       formControlName="pays" [ngClass]="statusInput(adresseControl('pays'), adresseSubmitted)">
+                <label for="floatingInputPays">Pays*</label>
+                <div class="invalid-feedback"
+                     *ngIf="(adresseForm.controls['pays'].touched || adresseSubmitted) && adresseForm.controls['pays'].invalid">
+                  <div *ngIf="adresseControl('pays', 'required')">Pays requis</div>
+                  <div *ngIf="adresseControl('pays', 'maxlength')">Maximum 50 caractères permis.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-floating has-validation">
+                <input type="text" class="form-control" id="floatingInputVille" placeholder="Bruxelles"
+                       formControlName="ville"
+                       [ngClass]="statusInput(adresseControl('ville'), adresseSubmitted)">
+                <label for="floatingInputVille">Ville *</label>
+                <div class="invalid-feedback"
+                     *ngIf="(adresseForm.controls['ville'].touched || adresseSubmitted) && adresseForm.controls['ville'].invalid">
+                  <div *ngIf="adresseControl('ville', 'required')">Ville est requise.</div>
+                  <div *ngIf="adresseControl('ville', 'maxlength')">Maximum 50 caractères permis.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-floating has-validation">
+                <input type="text" class="form-control" id="floatingInputCodePostal" placeholder="1000"
+                       formControlName="codePostal"
+                       [ngClass]="statusInput(adresseControl('codePostal'), adresseSubmitted)">
+                <label for="floatingInputCodePostal">Code Postal *</label>
+                <div class="invalid-feedback"
+                     *ngIf="(adresseForm.controls['codePostal'].touched || adresseSubmitted) && adresseForm.controls['codePostal'].invalid">
+                  <div *ngIf="adresseControl('codePostal', 'required')">Code postal est requis.</div>
+                  <div *ngIf="adresseControl('codePostal', 'minlength')">minimum 4 caractères requis.</div>
+                  <div *ngIf="adresseControl('codePostal', 'maxlength')">Maximum 10 caractères permis.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-lg-4">
+              <div class="form-floating has-validation">
+                <input type="text" class="form-control" id="floatingInputCodeRue" placeholder="Chaussée d'Ixelles"
+                       formControlName="rue"
+                       [ngClass]="statusInput(adresseControl('rue'), adresseSubmitted)">
+                <label for="floatingInputCodeRue">Rue *</label>
+                <div class="invalid-feedback"
+                     *ngIf="(adresseForm.controls['rue'].touched || adresseSubmitted) && adresseForm.controls['rue'].invalid">
+                  <div *ngIf="adresseControl('rue', 'required')">Rue est requise.</div>
+                  <div *ngIf="adresseControl('rue', 'maxlength')">Maximum 50 caractères permis.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-floating has-validation">
+                <input type="text" class="form-control" id="floatingInputNumero" placeholder="123a"
+                       formControlName="numero"
+                       [ngClass]="statusInput(adresseControl('numero'), adresseSubmitted)">
+                <label for="floatingInputNumero">Numero *</label>
+                <div class="invalid-feedback"
+                     *ngIf="(adresseForm.controls['numero'].touched || adresseSubmitted) && adresseForm.controls['rue'].invalid">
+                  <div *ngIf="adresseControl('numero', 'required')">Numéro est requis.</div>
+                  <div *ngIf="adresseControl('numero', 'maxlength')">Maximum 10 caractères permis.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInputBoite" formControlName="boite"
+                       placeholder="...">
+                <label for="floatingInputBoite">Boite</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="submit" class="btn btn-outline-primary">Modifier</button>
+            <button type="reset" class="btn btn-outline-danger">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- endregion -->
+  </app-card>
+</div>

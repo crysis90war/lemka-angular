@@ -1,1 +1,36 @@
-<p>horaire works!</p>
+<div class="container">
+  <div class="text-center my-5">
+    <h1 class="h1-lemka">Horaires</h1>
+  </div>
+
+  <div class="my-5">
+    <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th scope="col" colspan="4">Nous sommes ouverts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let horaire of horaires">
+          <td class="align-middle">{{ horaire.jour }}</td>
+
+          <ng-container *ngIf="horaire.estFerme;else surRdv">
+            <td>Fermé</td>
+          </ng-container>
+
+          <ng-template #surRdv>
+            <ng-container *ngIf="horaire.surRdv;else ouvert">
+              <td>Sur rendez-vous</td>
+            </ng-container>
+          </ng-template>
+
+          <ng-template #ouvert>
+            <td>
+              <p>De {{ horaire.heureOuverture }} à {{ horaire.heureFermeture }}</p>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,20 +1,20 @@
-import { IAdresseModel, IGenreModel } from ".";
+import {IAdresseModel, IGenreModel} from ".";
 
 export interface IUtilisateurModel {
   id: number;
   username: string;
   email: string;
-  tel?: string | null;
-  image?:string|null;
-  prenom?:string|null;
-  nom?:string|null;
-  genre?: IGenreModel|null;
-  role:string;
-  statut:string;
-  lastLogin?:Date;
-  createdAt:Date;
-  updatedAt?:Date|null;
-  adresse:IAdresseModel|null;
+  tel: string | null;
+  image: string | null;
+  prenom: string | null;
+  nom: string | null;
+  role: string;
+  statut: string;
+  genre: IGenreModel | null;
+  adresse: IAdresseModel | null;
+  createdAt: Date;
+  updatedAt: Date | null;
+  lastLogin: Date | null;
 }
 
 /*

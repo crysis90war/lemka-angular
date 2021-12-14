@@ -1,10 +1,11 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
-import { CommonModule, registerLocaleData } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { SharedModule } from './shared';
-import { HttpTokenInterceptor } from './interceptors';
+import {LOCALE_ID, NgModule} from '@angular/core';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {CommonModule, registerLocaleData} from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppComponent} from './app.component';
+import {SharedModule} from './shared';
+import {HttpTokenInterceptor} from './interceptors';
+import {BrowserModule} from '@angular/platform-browser';
 import localfrBe from '@angular/common/locales/fr-BE';
 
 import {
@@ -25,6 +26,7 @@ import {
   HomeComponent,
   HoraireComponent,
   NotFoundComponent,
+  UnauthorizedComponent
 } from './views';
 
 import {
@@ -34,7 +36,6 @@ import {
   AuthRoutingModule,
   DemoRoutingModule,
 } from '.';
-import { BrowserModule } from '@angular/platform-browser';
 
 registerLocaleData(localfrBe);
 
@@ -47,6 +48,7 @@ registerLocaleData(localfrBe);
     AboutComponent,
     NotFoundComponent,
     ContactComponent,
+    UnauthorizedComponent,
     HoraireComponent,
 
     // Compoenents
@@ -75,9 +77,10 @@ registerLocaleData(localfrBe);
   ],
   exports: [NavigationMenuComponent],
   providers: [
-    { provide: LOCALE_ID, useValue: localfrBe },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
+    {provide: LOCALE_ID, useValue: localfrBe},
+    {provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true},
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

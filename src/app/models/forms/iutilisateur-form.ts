@@ -1,7 +1,6 @@
 export interface IUtilisateurForm {
   username:string;
   tel:string|null;
-  image:string|null;
   prenom:string|null;
   nom:string|null;
   genreId:number|null

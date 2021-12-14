@@ -30,23 +30,26 @@
 
           <div>
             <span><i class="fas fa-home mr-2"></i></span>
-            <a *ngIf="!utilisateur.adresse;else notadresse" routerLink="adresse/add"><ins>Ajouter une
-                adresse</ins></a>
+            <a *ngIf="!utilisateur.adresse;else notadresse" routerLink="../adresse">
+              <ins> Ajouter une adresse</ins>
+            </a>
             <ng-template #notadresse>
-              <a #notadresse> Modifier l'adresse</a>
+              <a routerLink="./adresse/update"> Modifier l'adresse</a>
             </ng-template>
           </div>
 
           <div class="mt-2" *ngIf="utilisateur.adresse">
-            <span>{{ utilisateur.adresse.rue }}, {{ utilisateur.adresse.numero }} {{ utilisateur.adresse.boite
-              }}</span><br>
-            <span>{{ utilisateur.adresse.codePostal }} - {{ utilisateur.adresse.ville }}Code postal - Ville</span><br>
+            <span>
+              {{ utilisateur.adresse.rue }}, {{ utilisateur.adresse.numero }} {{ utilisateur.adresse.boite}}
+            </span>
+            <br>
+            <span>{{ utilisateur.adresse.codePostal }} - {{ utilisateur.adresse.ville }}</span><br>
             <span>Pays</span>
           </div>
 
           <hr>
 
-          <button routerLink="" class="btn btn-outline-primary my-3">
+          <button routerLink="/account/profil/update" class="btn btn-outline-primary my-3">
             Modifier profil
           </button>
         </div>
@@ -55,7 +58,8 @@
           <!-- <img [src]="utilisateur.image" class="h-100 rounded"> -->
 
           <div>
-            <p-image [src]="utilisateur.image ? utilisateur.image : 'assets/nocontent.png'" alt="Image" [preview]="true" width="100%">
+            <p-image [src]="utilisateur.image ? utilisateur.image : 'assets/nocontent.png'" alt="Image" [preview]="true"
+                     width="100%">
               <ng-template pTemplate="indicator">
                 Indicator Content
               </ng-template>

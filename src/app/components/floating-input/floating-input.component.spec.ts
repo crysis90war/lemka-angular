@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DemandeDevisComponent } from './demande-devis.component';
+import { FloatingInputComponent } from './floating-input.component';
 
-describe('DemandeDevisComponent', () => {
-  let component: DemandeDevisComponent;
-  let fixture: ComponentFixture<DemandeDevisComponent>;
+describe('FloatingInputComponent', () => {
+  let component: FloatingInputComponent;
+  let fixture: ComponentFixture<FloatingInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DemandeDevisComponent ]
+      declarations: [ FloatingInputComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DemandeDevisComponent);
+    fixture = TestBed.createComponent(FloatingInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

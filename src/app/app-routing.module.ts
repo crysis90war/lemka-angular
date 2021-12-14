@@ -7,6 +7,7 @@ import {
   HomeComponent,
   HoraireComponent,
   NotFoundComponent,
+  UnauthorizedComponent,
 } from './views';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'horaire', component: HoraireComponent },
   { path: 'a-propos', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
   {
     path: 'auth',
     loadChildren: () =>

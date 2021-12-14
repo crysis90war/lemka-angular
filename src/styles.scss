@@ -1,2 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+:root {
+  --silver_tree: #65BE9B;
+  --cork: #472E20;
+  --supernova: #FFCA08;
+  --hot_cinnamon: #DC6218;
+  --carrot_orange: #EF901E;
+  --java: #11BBBB;
+  --genoa: #127475;
+  --cowboy: #562C2C;
+  --flamingo: #F2542D;
+  --wheat: #F5DFBB;
+  --black: #000000;
+  --black-opacity19: #00000019;
+  --black-opacity23: #00000023;
+  --black_opacity90: #00000090;
+  --gray: #808080;
+  --white: #FFFFFF;
+  --concrete: #F3F3F3;
+  --white_opacity10: #FFFFFF10;
+  --excel: #217345;
+  --shopify: #96BF47;
+  --facebook: #4267B2;
+  --twitter: #1da1f2;
+  --linkedin: #2867b2;
+  --instagram: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  --lemka: linear-gradient(to right, #834d9b 0%, #be7ec3 50%, #b98bd0 100%);
+}
+
+.h1-lemka {
+  background: var(--lemka);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Permanent Marker', cursive;
+}

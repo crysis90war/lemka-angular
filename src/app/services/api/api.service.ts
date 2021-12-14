@@ -13,7 +13,14 @@ export class ApiService {
   constructor(private client: HttpClient) {}
 
   private static formatErrors(error: any) {
-    return throwError(error.error);
+    return throwError(() => error.error);
+  }
+
+  public getAll<TModel>(
+    path: string,
+    params: HttpParams = new HttpParams()
+  ): Observable<TModel[]> {
+    return this.client.get<TModel[]>(`${API_URL}${path}`, { params });
   }
 
   public get(

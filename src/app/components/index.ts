@@ -8,3 +8,4 @@ export * from './footer/footer.component';
 export * from './nav-item/nav-item.component';
 export * from './nav-dropdown/nav-dropdown.component';
 export * from './card/card.component';
+export * from './floating-input/floating-input.component';

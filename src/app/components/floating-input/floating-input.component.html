@@ -1,0 +1,9 @@
+<div class="form-floating has-validation">
+  <input class="form-control"
+         [ngClass]="classValid"
+         [type]="inputType"
+         [id]="forId"
+         [placeholder]="placeHolder">
+  <label [for]="forId">{{ label }}</label>
+  <ng-content></ng-content>
+</div>
