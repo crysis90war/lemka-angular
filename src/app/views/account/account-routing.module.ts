@@ -1,21 +1,36 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+
+import {
+  DemandeDevisResolver,
+  MensurationResolver
+} from "../../resolvers";
+
 import {NotFoundComponent} from '..';
-import {ProfilDetailsComponent} from "./components/profil/profil-details/profil-details.component";
-import {MensurationsListComponent} from "./components/mensurations/mensurations-list/mensurations-list.component";
-import {AccountComponent} from "./components/account/account.component";
-import {ProfilUpdateComponent} from "./components/profil/profil-update/profil-update.component";
-import {FavorisComponent} from "./components/favoris/favoris.component";
+import {AccountComponent} from "./account.component";
+
+import {
+  ProfilDetailsComponent,
+  ProfilUpdateComponent
+} from "./components/profil";
+
+import {
+  MensurationsListComponent,
+  MensurationsCreateComponent,
+  MensurationsDetailsComponent,
+  MensurationsUpdateComponent
+} from "./components/mensurations";
+
+import {
+  DemandesDevisListComponent,
+  DemandesDevisCreateComponent,
+  DemandesDevisDetailsComponent,
+  DemandesDevisUpdateComponent
+} from "./components/demandes-devis";
+
 import {RendezVousListComponent} from "./components/rendez-vous/rendez-vous-list/rendez-vous-list.component";
-import {
-  DemandesDevisListComponent
-} from "./components/demandes-devis/demandes-devis-list/demandes-devis-list.component";
-import {MensurationsCreateComponent} from "./components/mensurations/mensurations-create/mensurations-create.component";
-import {
-  MensurationsDetailsComponent
-} from "./components/mensurations/mensurations-details/mensurations-details.component";
-import {MensurationResolver} from "../../resolvers/mensuration.resolver";
-import {MensurationsUpdateComponent} from "./components/mensurations/mensurations-update/mensurations-update.component";
+
+import {FavorisComponent} from "./components/favoris/favoris.component";
 
 const routes: Routes = [
   {
@@ -42,6 +57,9 @@ const routes: Routes = [
         path: 'demandes-devis', children: [
           {path: '', redirectTo: 'list', pathMatch: 'full'},
           {path: 'list', component: DemandesDevisListComponent},
+          {path: 'create', component: DemandesDevisCreateComponent},
+          {path: ':id/details', resolve: {model: DemandeDevisResolver}, component: DemandesDevisDetailsComponent},
+          {path: ':id/update', resolve: {model: DemandeDevisResolver}, component: DemandesDevisUpdateComponent},
         ]
       },
       {

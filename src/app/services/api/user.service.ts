@@ -97,6 +97,11 @@ export class UserService {
       .pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
+  public createMensuration(form: IMensurationForm): Observable<IMensurationModel> {
+    let url: string = this._url([MENSURATIONS]);
+    return this._client.post<IMensurationModel>(url, form).pipe(retry(1), catchError(CustomHelpers.handleError));
+  }
+
   public getMensurationById(id: number): Observable<IMensurationModel> {
     let url: string = this._url([MENSURATIONS, id]);
     return this._client
@@ -104,24 +109,24 @@ export class UserService {
       .pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
-  public createMensuration(form: IMensurationForm): Observable<IMensurationModel> {
-    let url: string = this._url([MENSURATIONS]);
-    return this._client.post<IMensurationModel>(url, form).pipe(retry(), catchError(CustomHelpers.handleError));
-  }
-
   public updateMensuration(id: number, form: IMensurationForm): Observable<IMensurationModel> {
     let url: string = this._url([MENSURATIONS, id]);
-    return this._client.put<IMensurationModel>(url, form).pipe(retry(), catchError(CustomHelpers.handleError));
+    return this._client.put<IMensurationModel>(url, form).pipe(retry(1), catchError(CustomHelpers.handleError));
+  }
+
+  public deleteMensuration(id:number) {
+    let url:string = this._url([MENSURATIONS, id]);
+    return this._client.delete(url).pipe(retry(0), catchError(CustomHelpers.handleError));
   }
 
   public getMesures(id: number): Observable<IMesureModel[]> {
     let url: string = this._url([MENSURATIONS, id, 'Mesures']);
-    return this._client.get<IMesureModel[]>(url).pipe(retry(2), catchError(CustomHelpers.handleError))
+    return this._client.get<IMesureModel[]>(url).pipe(retry(1), catchError(CustomHelpers.handleError))
   }
 
   public updateMesure(mensurationId: number, mesureId: number, form: IMesureForm): Observable<IMesureModel> {
     let url: string = this._url([MENSURATIONS, mensurationId, 'Mesures', mesureId]);
-    return this._client.put<IMesureModel>(url, form).pipe(retry(2), catchError(CustomHelpers.handleError))
+    return this._client.put<IMesureModel>(url, form).pipe(retry(1), catchError(CustomHelpers.handleError))
   }
 
   //#endregion

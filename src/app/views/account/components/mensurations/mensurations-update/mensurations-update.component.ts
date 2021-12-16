@@ -36,7 +36,7 @@ export class MensurationsUpdateComponent implements OnInit {
     this.form = this.convertToMensuration(this.fg);
     this._userService.updateMensuration(this.model.id, this.form).subscribe({
       next: () => {
-        this._router.navigate(['../list'], {relativeTo: this._route});
+        this._router.navigate(['../../list'], {relativeTo: this._route});
       },
       error: (error) => console.error(error)
     })

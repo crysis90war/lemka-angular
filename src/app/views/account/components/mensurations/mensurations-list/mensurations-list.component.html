@@ -13,8 +13,8 @@
             <div class="col-lg-1">
               <span class="badge rounded-pill"
                     [ngClass]="{'bg-danger': !mensuration.isMain,'bg-success': mensuration.isMain}">
-              {{ mensuration.isMain ? 'Principale' : 'Secondaire' }}
-            </span>
+                {{ mensuration.isMain ? 'Principale' : 'Secondaire' }}
+              </span>
             </div>
 
             <div class="col-lg-3 d-flex justify-content-center">
@@ -22,12 +22,51 @@
                 <a class="btn btn-outline-primary" [routerLink]="navigateTo(mensuration.id, 'update')">
                   <i class="fas fa-edit"></i>
                 </a>
+
                 <a class="btn btn-outline-info" [routerLink]="navigateTo(mensuration.id, 'details')">
-                  <i class="fas fa-eye"></i></a>
-                <button class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                  <i class="fas fa-eye"></i>
+                </a>
+
+                <button class="btn btn-outline-danger"
+                        type="button"
+                        data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#modal'+mensuration.id">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade"
+                     [id]="'modal'+mensuration.id"
+                     tabindex="-1"
+                     aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Suppression de {{ mensuration.titre }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Êtes-vous sûre de vouloir supprimer cet enregistrement ?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+                          Fermer
+                        </button>
+                        <button type="button"
+                                class="btn btn-danger"
+                                data-bs-dismiss="modal"
+                                (click)="delete(mensuration.id)">
+                          Oui
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
         </app-card>
       </li>

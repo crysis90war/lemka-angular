@@ -14,7 +14,7 @@ import {CardComponent, FloatingInputComponent} from 'src/app/components';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ProfilDetailsComponent} from './components/profil/profil-details/profil-details.component';
 import {MensurationsListComponent} from './components/mensurations/mensurations-list/mensurations-list.component';
-import {AccountComponent} from "./components/account/account.component";
+import {AccountComponent} from "./account.component";
 import {ProfilUpdateComponent} from "./components/profil/profil-update/profil-update.component";
 import {FavorisComponent} from "./components/favoris/favoris.component";
 import {RendezVousListComponent} from './components/rendez-vous/rendez-vous-list/rendez-vous-list.component';
@@ -25,6 +25,9 @@ import { MensurationsCreateComponent } from './components/mensurations/mensurati
 import { MensurationsDetailsComponent } from './components/mensurations/mensurations-details/mensurations-details.component';
 import { MensurationsUpdateComponent } from './components/mensurations/mensurations-update/mensurations-update.component';
 import {MesureFormInputComponent} from "../../components/mesure-form-input/mesure-form-input.component";
+import { DemandesDevisCreateComponent } from './components/demandes-devis/demandes-devis-create/demandes-devis-create.component';
+import { DemandesDevisDetailsComponent } from './components/demandes-devis/demandes-devis-details/demandes-devis-details.component';
+import { DemandesDevisUpdateComponent } from './components/demandes-devis/demandes-devis-update/demandes-devis-update.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import {MesureFormInputComponent} from "../../components/mesure-form-input/mesur
     MensurationsCreateComponent,
     MensurationsDetailsComponent,
     MensurationsUpdateComponent,
-    MesureFormInputComponent
+    MesureFormInputComponent,
+    DemandesDevisCreateComponent,
+    DemandesDevisDetailsComponent,
+    DemandesDevisUpdateComponent
 
   ],
     imports: [
