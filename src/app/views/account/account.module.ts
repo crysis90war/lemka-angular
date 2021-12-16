@@ -21,6 +21,10 @@ import {RendezVousListComponent} from './components/rendez-vous/rendez-vous-list
 import {
   DemandesDevisListComponent
 } from './components/demandes-devis/demandes-devis-list/demandes-devis-list.component';
+import { MensurationsCreateComponent } from './components/mensurations/mensurations-create/mensurations-create.component';
+import { MensurationsDetailsComponent } from './components/mensurations/mensurations-details/mensurations-details.component';
+import { MensurationsUpdateComponent } from './components/mensurations/mensurations-update/mensurations-update.component';
+import {MesureFormInputComponent} from "../../components/mesure-form-input/mesure-form-input.component";
 
 @NgModule({
   declarations: [
@@ -39,22 +43,26 @@ import {
     // Components
     CardComponent,
     DemandesDevisListComponent,
-    FloatingInputComponent
+    FloatingInputComponent,
+    MensurationsCreateComponent,
+    MensurationsDetailsComponent,
+    MensurationsUpdateComponent,
+    MesureFormInputComponent
 
   ],
-  imports: [
-    CommonModule,
-    AccountRoutingModule,
-    ReactiveFormsModule,
-    SharedModule,
+    imports: [
+        CommonModule,
+        AccountRoutingModule,
+        ReactiveFormsModule,
+        SharedModule,
 
-    TabMenuModule,
-    ImageModule,
-    ButtonModule,
-    TabViewModule,
-    ProgressSpinnerModule,
-    RippleModule,
-  ],
+        TabMenuModule,
+        ImageModule,
+        ButtonModule,
+        TabViewModule,
+        ProgressSpinnerModule,
+        RippleModule,
+    ],
   bootstrap: [AccountComponent],
 })
 export class AccountModule {

@@ -1,15 +1,42 @@
 <div class="container">
   <ng-container *ngIf="utilisateur;else ngNotUser">
 
-    <app-card [title]="utilisateur.username">
+    <app-card title="Mon profil">
       <div class="row">
+        <div class="col-lg-5">
+          <!-- <img [src]="utilisateur.image" class="h-100 rounded"> -->
+
+          <div class="img-thumbnail img-fluid">
+            <p-image [src]="utilisateur.image ? utilisateur.image : 'assets/nocontent.png'"
+                     alt="Image" [preview]="true"
+                     width="100%">
+              <ng-template pTemplate="indicator">
+                Indicator Content
+              </ng-template>
+            </p-image>
+          </div>
+
+          <div>
+            <button id="toggle-btn" class="btn btn-light w-100">
+              Modifier photo
+            </button>
+          </div>
+
+        </div>
+
         <div class="col-lg-7">
-          <h3>{{ fullName }}</h3>
+          <div>
+            <h4>{{utilisateur.username}}</h4>
+          </div>
           <div>
             <span class="badge bg-primary">{{utilisateur.role}}</span>
           </div>
 
           <hr>
+
+          <div>
+            <h3>{{ fullName }}</h3>
+          </div>
 
           <div>
             <span class="mr-2"><i class="far fa-envelope"></i></span>
@@ -28,23 +55,12 @@
 
           <hr>
 
-          <div>
-            <span><i class="fas fa-home mr-2"></i></span>
-            <a *ngIf="!utilisateur.adresse;else notadresse" routerLink="../adresse">
-              <ins> Ajouter une adresse</ins>
-            </a>
-            <ng-template #notadresse>
-              <a routerLink="./adresse/update"> Modifier l'adresse</a>
-            </ng-template>
-          </div>
-
           <div class="mt-2" *ngIf="utilisateur.adresse">
-            <span>
-              {{ utilisateur.adresse.rue }}, {{ utilisateur.adresse.numero }} {{ utilisateur.adresse.boite}}
-            </span>
+            <span><i class="fas fa-home"></i></span><br>
+            <span>{{ utilisateur.adresse.rue }}, {{ utilisateur.adresse.numero }} {{ utilisateur.adresse.boite}}</span>
             <br>
             <span>{{ utilisateur.adresse.codePostal }} - {{ utilisateur.adresse.ville }}</span><br>
-            <span>Pays</span>
+            <span>{{ utilisateur.adresse.pays }}</span>
           </div>
 
           <hr>
@@ -52,26 +68,6 @@
           <button routerLink="/account/profil/update" class="btn btn-outline-primary my-3">
             Modifier profil
           </button>
-        </div>
-
-        <div class="col-lg-5">
-          <!-- <img [src]="utilisateur.image" class="h-100 rounded"> -->
-
-          <div>
-            <p-image [src]="utilisateur.image ? utilisateur.image : 'assets/nocontent.png'" alt="Image" [preview]="true"
-                     width="100%">
-              <ng-template pTemplate="indicator">
-                Indicator Content
-              </ng-template>
-            </p-image>
-          </div>
-
-          <div>
-            <button id="toggle-btn" class="btn btn-light w-100">
-              Modifier photo
-            </button>
-          </div>
-
         </div>
       </div>
 

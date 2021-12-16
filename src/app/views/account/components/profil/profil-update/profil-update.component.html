@@ -164,7 +164,7 @@
                        [ngClass]="statusInput(adresseControl('numero'), adresseSubmitted)">
                 <label for="floatingInputNumero">Numero *</label>
                 <div class="invalid-feedback"
-                     *ngIf="(adresseForm.controls['numero'].touched || adresseSubmitted) && adresseForm.controls['rue'].invalid">
+                     *ngIf="(adresseForm.controls['numero'].touched || adresseSubmitted) && adresseForm.controls['numero'].invalid">
                   <div *ngIf="adresseControl('numero', 'required')">Numéro est requis.</div>
                   <div *ngIf="adresseControl('numero', 'maxlength')">Maximum 10 caractères permis.</div>
                 </div>

@@ -10,6 +10,12 @@ import {RendezVousListComponent} from "./components/rendez-vous/rendez-vous-list
 import {
   DemandesDevisListComponent
 } from "./components/demandes-devis/demandes-devis-list/demandes-devis-list.component";
+import {MensurationsCreateComponent} from "./components/mensurations/mensurations-create/mensurations-create.component";
+import {
+  MensurationsDetailsComponent
+} from "./components/mensurations/mensurations-details/mensurations-details.component";
+import {MensurationResolver} from "../../resolvers/mensuration.resolver";
+import {MensurationsUpdateComponent} from "./components/mensurations/mensurations-update/mensurations-update.component";
 
 const routes: Routes = [
   {
@@ -26,13 +32,16 @@ const routes: Routes = [
       {
         path: 'mensurations', children: [
           {path: '', redirectTo: 'list', pathMatch: 'full'},
-          {path: 'list', component: MensurationsListComponent}
+          {path: 'list', component: MensurationsListComponent},
+          {path: 'create', component: MensurationsCreateComponent},
+          {path: ':id/details', resolve: {model: MensurationResolver}, component: MensurationsDetailsComponent},
+          {path: ':id/update', resolve: {model: MensurationResolver}, component: MensurationsUpdateComponent},
         ]
       },
       {
         path: 'demandes-devis', children: [
           {path: '', redirectTo: 'list', pathMatch: 'full'},
-          {path: 'list', component: DemandesDevisListComponent}
+          {path: 'list', component: DemandesDevisListComponent},
         ]
       },
       {

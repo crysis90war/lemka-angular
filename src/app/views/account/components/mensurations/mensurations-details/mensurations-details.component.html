@@ -1,0 +1,28 @@
+<div class="container">
+  <app-card [title]="mensuration.titre">
+    <span
+      class="badge rounded-pill"
+      [ngClass]="{'bg-danger': !mensuration.isMain, 'bg-success': mensuration.isMain}"
+    >
+      {{ mensuration.isMain ? 'Principale' : 'Secondaire' }}
+    </span>
+    <p>{{mensuration.description}}</p>
+    <hr>
+
+    <div class="row">
+      <div class="col-lg-3 mb-3" *ngFor="let formMesure of mesureArray.controls; let i = index">
+        <ng-container *ngFor="let mesure of mesures; let j = index">
+          <ng-container *ngIf="i === j">
+            <app-mesure-form-input [form]="asFormGroup(formMesure)"
+                                   [mensurationId]="mensuration.id"
+                                   [mesureModel]="mesure"
+                                   [index]="i"
+            ></app-mesure-form-input>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+
+  </app-card>
+</div>
+

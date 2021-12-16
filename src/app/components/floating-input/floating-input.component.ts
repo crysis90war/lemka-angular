@@ -11,6 +11,7 @@ export class FloatingInputComponent implements OnInit {
   @Input() inputType: string = 'text';
   @Input() forId: string = 'floatingInput';
   @Input() placeHolder: string = 'Exemple';
+  @Input() field;
 
   constructor() {
   }

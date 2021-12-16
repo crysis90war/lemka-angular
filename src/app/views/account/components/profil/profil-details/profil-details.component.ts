@@ -19,19 +19,15 @@ export class ProfilDetailsComponent implements OnInit {
   constructor(private _utilisateurService: UserService) {}
 
   ngOnInit(): void {
-    this.loadUser();
-  }
-
-  ngOnDestroy(): void {
-    this.utilisateur = null;
-  }
-
-  private loadUser() {
     this._utilisateurService.getUserProfil().subscribe({
       next: (utilisateur: IUtilisateurModel) => {
         this.utilisateur = utilisateur;
       },
       error: (e) => console.error(e),
     });
+  }
+
+  ngOnDestroy(): void {
+    this.utilisateur = null;
   }
 }

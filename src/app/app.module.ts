@@ -75,7 +75,7 @@ registerLocaleData(localfrBe);
     DemoRoutingModule,
     LegalesRoutingModule,
   ],
-  exports: [NavigationMenuComponent],
+    exports: [NavigationMenuComponent],
   providers: [
     {provide: LOCALE_ID, useValue: localfrBe},
     {provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true},

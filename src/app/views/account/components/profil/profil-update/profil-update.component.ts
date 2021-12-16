@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {IAdresseForm, IUtilisateurForm} from "../../../../../models/forms";
 import {GenreService, UserService} from "../../../../../services/api";
-import {IAdresseModel, IGenreModel, IUtilisateurModel, UtilisateurModel} from "../../../../../models";
+import {IAdresseModel, IGenreModel, UtilisateurModel} from "../../../../../models";
 
 @Component({
   selector: 'app-profil-test-update',
@@ -14,6 +14,7 @@ import {IAdresseModel, IGenreModel, IUtilisateurModel, UtilisateurModel} from ".
 export class ProfilUpdateComponent implements OnInit {
 
   public genres: IGenreModel[] = [];
+  public adresseExists: boolean;
 
   public form!: FormGroup;
 
@@ -33,6 +34,7 @@ export class ProfilUpdateComponent implements OnInit {
 
   constructor(
     private _router: Router,
+    private _route: ActivatedRoute,
     private _formBuilder: FormBuilder,
     private _userService: UserService,
     private _genreService: GenreService
@@ -81,7 +83,7 @@ export class ProfilUpdateComponent implements OnInit {
     this._userService.updateUserProfil(this.utilisateur).subscribe({
       next: (res) => {
         this.setUtilisateur(res);
-        this._router.navigate(['../details'])
+        this._backToDetails();
       },
       error: (error) => console.error(error)
     })
@@ -91,7 +93,23 @@ export class ProfilUpdateComponent implements OnInit {
     this.adresseSubmitted = true;
     if (!this.adresseForm.valid) throw new Error("Le fomulaire n'est pas valide !");
     this.adresse = this.convertToAdresse(this.adresseForm);
-    console.log(this.adresse);
+    if (this.adresseExists) {
+      this._userService.createUserAdresse(this.adresse).subscribe({
+        next: (res) => {
+          this.setAdresse(res);
+          this._backToDetails();
+        },
+        error: (error) => console.error(error)
+      })
+    } else {
+      this._userService.updateUserAdresse(this.adresse).subscribe({
+        next: (res) => {
+          this.setAdresse(res);
+          this._backToDetails();
+        },
+        error: (error) => console.error(error)
+      })
+    }
   }
 
   public convertToAdresse(fg: FormGroup): IAdresseForm {
@@ -101,7 +119,7 @@ export class ProfilUpdateComponent implements OnInit {
       codePostal: fg.controls['codePostal'].value.trim(),
       rue: fg.controls['rue'].value.trim(),
       numero: fg.controls['numero'].value.trim(),
-      boite: fg.controls['boite'].value.trim(),
+      boite: fg.controls['boite'].value ? fg.controls['boite'].value.trim() : null,
     };
   }
 
@@ -113,14 +131,6 @@ export class ProfilUpdateComponent implements OnInit {
       prenom: fg.controls['prenom'].value ? fg.controls['prenom'].value.trim() : fg.controls['prenom'].value,
       tel: fg.controls['tel'].value ? fg.controls['tel'].value.trim() : fg.controls['tel'].value,
     }
-  }
-
-  public inputStatus(field: string): string {
-    if (this.adresseSubmitted && this.adresseForm.controls[field].errors)
-      return 'is-invalid';
-    if (this.adresseSubmitted && !this.adresseForm.controls[field].errors)
-      return 'is-valid';
-    else return '';
   }
 
   public statusInput(error: ValidationErrors, submitted: boolean) {
@@ -161,6 +171,7 @@ export class ProfilUpdateComponent implements OnInit {
 
   public setAdresse(values: IAdresseModel | null): void {
     if (values) {
+      this.adresseExists = true;
       this.adresseForm.setValue({
         pays: values.pays,
         ville: values.ville,
@@ -170,5 +181,9 @@ export class ProfilUpdateComponent implements OnInit {
         boite: values.boite
       })
     }
+  }
+
+  private _backToDetails() {
+    this._router.navigate(['../details'], { relativeTo: this._route });
   }
 }

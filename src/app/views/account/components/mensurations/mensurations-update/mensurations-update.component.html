@@ -1,0 +1,37 @@
+<div class="container">
+  <app-card title="Création de mensuration">
+    <form [formGroup]="fg" (ngSubmit)="submit()">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="flexCheckDefault" formControlName="isMain">
+        <label class="form-check-label" for="flexCheckDefault">
+          Principale
+        </label>
+      </div>
+
+      <div class="form-floating has-validation mt-3">
+        <input type="text" class="form-control" id="floatingInputTitre" placeholder="..."
+               formControlName="titre"
+               [ngClass]="statusInput(customControl('titre'), submitted)">
+        <label for="floatingInputTitre">Titre*</label>
+
+        <div
+          *ngIf="(fg.controls['titre'].touched || submitted) && fg.controls['titre'].invalid"
+          class="invalid-feedback">
+          <div *ngIf="customControl('titre', 'required')">Le titre est requis.</div>
+          <div *ngIf="customControl('titre', 'maxlength')">Maximum 128 caractères permis.</div>
+        </div>
+      </div>
+
+      <div class="form-floating has-validation mt-3">
+        <textarea class="form-control" id="floatingInputDescription" placeholder="..." style="min-height: 150px"
+                  formControlName="description"></textarea>
+        <label for="floatingInputDescription">Description</label>
+      </div>
+
+      <div class="btn-group mt-3">
+        <button type="submit" class="btn btn-outline-success">Créer</button>
+        <button type="reset" class="btn btn-outline-danger">Reset</button>
+      </div>
+    </form>
+  </app-card>
+</div>

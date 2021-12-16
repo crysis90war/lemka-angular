@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { TokenStorageService } from '../token-storage.service';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {retry, catchError} from 'rxjs/operators';
+import {environment} from 'src/environments/environment';
+import {TokenStorageService} from '../token-storage.service';
 
 import {
   IAdresseModel,
@@ -18,14 +18,15 @@ import {
   IMensurationForm,
   IUtilisateurForm,
 } from 'src/app/models/forms';
-import { CustomHelpers } from 'src/app/handlers/custom-helpers';
+import {CustomHelpers} from 'src/app/handlers/custom-helpers';
+import {IMesureModel} from "../../models/imesure-model";
+import {IMesureForm} from "../../models/forms/imesure-form";
 
 const API_URL = environment.api_url;
-const USER_URL = API_URL + 'Utilisateurs/';
-const ADRESSE = '/Adresse';
-const MENSURATIONS = '/Mensurations';
-const DEMANDES_DEVIS = '/DemandesDevis';
-const RENDEZ_VOUS = '/RendezVous';
+const ADRESSE = 'Adresse';
+const MENSURATIONS = 'Mensurations';
+const DEMANDES_DEVIS = 'DemandesDevis';
+const RENDEZ_VOUS = 'RendezVous';
 
 @Injectable({
   providedIn: 'root',
@@ -38,31 +39,25 @@ export class UserService {
   constructor(
     private _client: HttpClient,
     private _tokenStorageService: TokenStorageService
-  ) {}
+  ) {
+  }
 
   //#region Concernant le profil-test
 
   public getUserProfil(): Observable<IUtilisateurModel> {
-    let url: string = USER_URL + this._tokenStorageService.decodeToken()?.id;
-    return this._client
-      .get<IUtilisateurModel>(url)
-      .pipe(retry(2), catchError(CustomHelpers.handleError));
+    let url: string = this._url();
+    return this._client.get<IUtilisateurModel>(url).pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
-  public updateUserProfil(
-    form: IUtilisateurForm
-  ): Observable<IUtilisateurModel> {
-    let url: string = USER_URL + this._tokenStorageService.decodeToken()?.id;
-    return this._client
-      .put<IUtilisateurModel>(url, form)
-      .pipe(retry(2), catchError(CustomHelpers.handleError));
+  public updateUserProfil(form: IUtilisateurForm): Observable<IUtilisateurModel> {
+    let url: string = this._url();
+    return this._client.put<IUtilisateurModel>(url, form).pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
   public changePassword(oldPassword: string, newPassword: string) {
-    let url: string =
-      USER_URL + this._tokenStorageService.decodeToken()?.id + '/Password';
+    let url: string = this._url(['Password']);
     return this._client
-      .put(url, { oldPassword: oldPassword, newPassword: newPassword })
+      .put(url, {oldPassword: oldPassword, newPassword: newPassword})
       .pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
@@ -71,24 +66,21 @@ export class UserService {
   //#region Concernant l'adresse
 
   public createUserAdresse(form: IAdresseForm): Observable<IAdresseModel> {
-    let url: string =
-      USER_URL + this._tokenStorageService.decodeToken()?.id + ADRESSE;
+    let url: string = this._url([ADRESSE]);
     return this._client
       .post<IAdresseModel>(url, form)
       .pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
   public updateUserAdresse(form: IAdresseForm): Observable<IAdresseModel> {
-    let url: string =
-      USER_URL + this._tokenStorageService.decodeToken()?.id + ADRESSE;
+    let url: string = this._url([ADRESSE]);
     return this._client
       .put<IAdresseModel>(url, form)
       .pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
   public deleteUserAdresse() {
-    let url: string =
-      USER_URL + this._tokenStorageService.decodeToken()?.id + ADRESSE;
+    let url: string = this._url([ADRESSE]);
     return this._client
       .delete(url)
       .pipe(retry(2), catchError(CustomHelpers.handleError));
@@ -98,31 +90,38 @@ export class UserService {
 
   //#region Concernant les mensurations
 
-  public getMensurationsAll() {
-    let url: string =
-      USER_URL + this._tokenStorageService.decodeToken()?.id + MENSURATIONS;
+  public getMensurationsAll(): Observable<IMensurationModel[]> {
+    let url: string = this._url([MENSURATIONS]);
     return this._client
       .get<IMensurationModel[]>(url)
       .pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
-  public getMensurationById(id: number) {
-    let url: string =
-      USER_URL +
-      this._tokenStorageService.decodeToken()?.id +
-      MENSURATIONS +
-      `/${id}`;
+  public getMensurationById(id: number): Observable<IMensurationModel> {
+    let url: string = this._url([MENSURATIONS, id]);
     return this._client
       .get<IMensurationModel>(url)
       .pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
-  public createMensuration(form: IMensurationForm) {
-    let url: string =
-      USER_URL + this._tokenStorageService.decodeToken()?.id + MENSURATIONS;
-    return this._client
-      .post<IMensurationModel>(url, form)
-      .pipe(retry(), catchError(CustomHelpers.handleError));
+  public createMensuration(form: IMensurationForm): Observable<IMensurationModel> {
+    let url: string = this._url([MENSURATIONS]);
+    return this._client.post<IMensurationModel>(url, form).pipe(retry(), catchError(CustomHelpers.handleError));
+  }
+
+  public updateMensuration(id: number, form: IMensurationForm): Observable<IMensurationModel> {
+    let url: string = this._url([MENSURATIONS, id]);
+    return this._client.put<IMensurationModel>(url, form).pipe(retry(), catchError(CustomHelpers.handleError));
+  }
+
+  public getMesures(id: number): Observable<IMesureModel[]> {
+    let url: string = this._url([MENSURATIONS, id, 'Mesures']);
+    return this._client.get<IMesureModel[]>(url).pipe(retry(2), catchError(CustomHelpers.handleError))
+  }
+
+  public updateMesure(mensurationId: number, mesureId: number, form: IMesureForm): Observable<IMesureModel> {
+    let url: string = this._url([MENSURATIONS, mensurationId, 'Mesures', mesureId]);
+    return this._client.put<IMesureModel>(url, form).pipe(retry(2), catchError(CustomHelpers.handleError))
   }
 
   //#endregion
@@ -130,16 +129,14 @@ export class UserService {
   //#region Concernant la demande de devis
 
   public getAllDemandeDevis() {
-    let url: string =
-      USER_URL + this._tokenStorageService.decodeToken()?.id + DEMANDES_DEVIS;
+    let url: string = this._url([DEMANDES_DEVIS]);
     return this._client
       .get<IDemandeDevisModel[]>(url)
       .pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
   public createDemandedevis(form: IDemandeDevisForm) {
-    let url: string =
-      USER_URL + this._tokenStorageService.decodeToken()?.id + DEMANDES_DEVIS;
+    let url: string = this._url([DEMANDES_DEVIS]);
     return this._client
       .post<IDemandeDevisModel>(url, form)
       .pipe(retry(2), catchError(CustomHelpers.handleError));
@@ -150,8 +147,7 @@ export class UserService {
   //#region Concernant les rebdez-vous
 
   public getAllRendezVous() {
-    let url: string =
-      USER_URL + this._tokenStorageService.decodeToken()?.id + RENDEZ_VOUS;
+    let url: string = this._url([RENDEZ_VOUS]);
     return this._client
       .get<IRendezVousModel[]>(url)
       .pipe(retry(2), catchError(CustomHelpers.handleError));
@@ -164,6 +160,20 @@ export class UserService {
   //#endregion
 
   //#region Autres méthodes utilisés avant
+
+  private _userId(): number {
+    return this._tokenStorageService.decodeToken()?.id;
+  }
+
+  private _url(ressources: any[] = []): string {
+    let baseUrl: string = `${API_URL}Utilisateurs/${this._userId()}`;
+    if (ressources.length > 0) {
+      for (let i = 0; i < ressources.length; i++) {
+        baseUrl += `/${ressources[i]}`;
+      }
+    }
+    return baseUrl;
+  }
 
   public emitUtilisateurSubject(): void {
     this._utilisateurSubject.next(this.utilisateur);

@@ -1,0 +1,46 @@
+
+
+<form [formGroup]="form" (submit)="submit()">
+  <label class="form-label"
+         [for]="'mesureInput'+index">
+    {{ mesureModel.nom }}
+  </label>
+
+  <div class="input-group has-validation">
+    <span class="input-group-text">cm</span>
+    <input [id]="'mesureInput'+index"
+           type="number"
+           formControlName="valeur"
+           class="form-control"
+           pattern="[+-]?([0-9]*[.])?[0-9]+"
+           [ngClass]="statusInput(fieldControl('valeur'), submitted)"
+           aria-label="Mesure"
+           aria-describedby="button-addon"
+           step="0.01">
+
+    <button class="btn btn-outline-secondary"
+            type="submit"
+            id="button-addon">
+      <i class="far fa-save"></i>
+    </button>
+
+    <button type="button"
+            class="btn btn-secondary"
+            data-bs-container="body"
+            data-bs-toggle="popover"
+            data-bs-placement="top"
+            [attr.data-bs-content]="mesureModel.description"
+            title="Informations sur mesure"
+            [disabled]="!mesureModel.description && !mesureModel.image">
+      <i class="fas fa-question-circle"></i>
+    </button>
+
+    <div class="invalid-feedback"
+         *ngIf="(form.controls['valeur'].touched || submitted) && form.controls['valeur'].invalid">
+      <div *ngIf="fieldControl('valeur', 'required')">Valeur est requise !</div>
+      <div *ngIf="fieldControl('valeur', 'min')">Minimum 0 cm !</div>
+      <div *ngIf="fieldControl('valeur', 'max')">Maximum 250 cm !</div>
+    </div>
+  </div>
+
+</form>
