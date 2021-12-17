@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/for
 import {IMensurationForm} from "../../../../../models/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../../../../services/api";
+import {FormConverters} from "../../../../../handlers/form-converters";
+import {CustomHelpers} from "../../../../../handlers/custom-helpers";
 
 @Component({
   selector: 'app-mensurations-create',
@@ -23,48 +25,34 @@ export class MensurationsCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form = this._formBuilder.group({
-      titre: [null, [Validators.required, Validators.maxLength(128)]],
-      description: [null, null],
-      isMain: [null, null]
-    })
+    this._initForm();
   }
 
   submit() {
     this.submitted = true;
     if (!this.form.valid) throw new Error("Le fomulaire n'est pas valide !");
-    this.mensuration = this.convertToMensuration(this.form);
+    this.mensuration = FormConverters.convertToMensuration(this.form);
     this._userService.createMensuration(this.mensuration).subscribe({
       next: () => {
-        this._router.navigate(['../list'], { relativeTo: this._route });
+        this._router.navigate(['../list'], {relativeTo: this._route});
       },
       error: (error) => console.error(error)
     })
   }
 
-  public convertToMensuration(fg: FormGroup): IMensurationForm {
-    return {
-      titre: fg.controls['titre'].value.trim(),
-      description: fg.controls['description'].value ? fg.controls['description'].value.trim() : null,
-      isMain: !!fg.controls['isMain'].value
-    }
-  }
-
-  public statusInput(error: ValidationErrors, submitted: boolean) {
-    if (submitted && error) {
-      return 'is-invalid';
-    } else if (submitted && !error) {
-      return 'is-valid';
-    } else {
-      return '';
-    }
+  public statusInput(error: ValidationErrors, submitted: boolean): string {
+    return CustomHelpers.handleStatus(error, submitted);
   }
 
   public customControl(field: string, validation: string | null = null) {
-    if (validation) {
-      return this.form.controls[field].errors[validation];
-    } else {
-      return this.form.controls[field].errors
-    }
+    return CustomHelpers.handleFormError(field, this.form, validation);
+  }
+
+  private _initForm(): void {
+    this.form = this._formBuilder.group({
+      titre: [null, [Validators.required, Validators.maxLength(128)]],
+      description: [null, null],
+      isMain: [null, null]
+    })
   }
 }

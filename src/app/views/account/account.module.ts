@@ -28,6 +28,7 @@ import {MesureFormInputComponent} from "../../components/mesure-form-input/mesur
 import { DemandesDevisCreateComponent } from './components/demandes-devis/demandes-devis-create/demandes-devis-create.component';
 import { DemandesDevisDetailsComponent } from './components/demandes-devis/demandes-devis-details/demandes-devis-details.component';
 import { DemandesDevisUpdateComponent } from './components/demandes-devis/demandes-devis-update/demandes-devis-update.component';
+import {TableauComponent} from "../../components/tableau/tableau.component";
 
 @NgModule({
   declarations: [
@@ -53,8 +54,8 @@ import { DemandesDevisUpdateComponent } from './components/demandes-devis/demand
     MesureFormInputComponent,
     DemandesDevisCreateComponent,
     DemandesDevisDetailsComponent,
-    DemandesDevisUpdateComponent
-
+    DemandesDevisUpdateComponent,
+    TableauComponent
   ],
     imports: [
         CommonModule,

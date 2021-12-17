@@ -2,6 +2,59 @@
   <app-card title="Mes demandes de devis">
     <a routerLink="../create" class="btn btn-outline-success">Créer une démande</a>
 
-    
+    <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="creation-tab" data-bs-toggle="tab" data-bs-target="#creation" type="button"
+                role="tab" aria-controls="home" aria-selected="true">
+          <i class="fas fa-pen-alt"></i>
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="sent-tab" data-bs-toggle="tab" data-bs-target="#sent" type="button"
+                role="tab" aria-controls="profile" aria-selected="false">
+          <i class="fas fa-share"></i>
+        </button>
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="working-tab" data-bs-toggle="tab" data-bs-target="#working" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">
+          <i class="far fa-folder-open"></i>
+        </button>
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="answer-tab" data-bs-toggle="tab" data-bs-target="#answer" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">
+          <i class="fas fa-reply"></i>
+        </button>
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="archive-tab" data-bs-toggle="tab" data-bs-target="#archive" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">
+          <i class="fas fa-archive"></i>
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active p-2" id="creation" role="tabpanel" aria-labelledby="creation-tab">
+        <app-tableau [fields]="enCoursFields"
+                     [items]="demandesEnCours">
+        </app-tableau>
+      </div>
+
+      <div class="tab-pane fade" id="sent" role="tabpanel" aria-labelledby="sent-tab">
+        <app-tableau [fields]="enTraitemenntFields"
+                     [items]="demandesEnTraitement">
+        </app-tableau>
+      </div>
+      <div class="tab-pane fade" id="working" role="tabpanel" aria-labelledby="working-tab">...</div>
+      <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab">...</div>
+      <div class="tab-pane fade" id="archive" role="tabpanel" aria-labelledby="archive-tab">...</div>
+    </div>
+
+
   </app-card>
 </div>

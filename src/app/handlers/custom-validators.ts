@@ -1,10 +1,10 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export class CustomValidators {
   public static verifiyAge(minimalAge: number): ValidatorFn {
     return (control: AbstractControl): null | ValidationErrors => {
       let date: any | undefined = control.value;
-      if (!date) return { error: 'no value detected' };
+      if (!date) return {error: 'no value detected'};
       date = new Date(date);
       let today = new Date();
       if (today.getFullYear() - date.getFullYear() < minimalAge)
@@ -15,11 +15,9 @@ export class CustomValidators {
     };
   }
 
-  public static cannotContainSpace(
-    control: AbstractControl
-  ): ValidationErrors | null {
+  public static cannotContainSpace(control: AbstractControl): ValidationErrors | null {
     if ((control.value as string).indexOf(' ') >= 0) {
-      return { cannotContainSpace: true };
+      return {cannotContainSpace: true};
     }
     return null;
   }
@@ -40,7 +38,7 @@ export class CustomValidators {
   public static MinLowerCase(minimal: number): ValidatorFn {
     return (control: AbstractControl): null | ValidationErrors => {
       let value: string | undefined = control.value;
-      if (!value) return { error: 'No value detected' };
+      if (!value) return {error: 'No value detected'};
       let i: number = 0;
       let found: number = 0;
       while (i < value.length && found < minimal) {
@@ -48,7 +46,7 @@ export class CustomValidators {
         i++;
       }
       if (found < minimal)
-        return { minLowerCase: 'Not enough lowercase detected' };
+        return {minLowerCase: 'Not enough lowercase detected'};
       return null;
     };
   }
@@ -56,7 +54,7 @@ export class CustomValidators {
   public static MinUpperCase(minimal: number): ValidatorFn {
     return (control: AbstractControl): null | ValidationErrors => {
       let value: string = control.value;
-      if (!value) return { error: 'No value detected' };
+      if (!value) return {error: 'No value detected'};
       let i: number = 0;
       let found: number = 0;
       while (i < value.length && found < minimal) {
@@ -64,7 +62,7 @@ export class CustomValidators {
         i++;
       }
       if (found < minimal)
-        return { minUpperCase: 'Not enough uppercase detected' };
+        return {minUpperCase: 'Not enough uppercase detected'};
       return null;
     };
   }
@@ -72,14 +70,14 @@ export class CustomValidators {
   public static MinNumber(minimal: number): ValidatorFn {
     return (control: AbstractControl): null | ValidationErrors => {
       let value: string = control.value;
-      if (!value) return { error: 'No value detected' };
+      if (!value) return {error: 'No value detected'};
       let i: number = 0;
       let found: number = 0;
       while (i < value.length && found < minimal) {
         if (value[i].match(/\d/)) found++;
         i++;
       }
-      if (found < minimal) return { minNumber: 'Not enough number detected' };
+      if (found < minimal) return {minNumber: 'Not enough number detected'};
       return null;
     };
   }

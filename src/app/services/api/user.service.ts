@@ -133,7 +133,7 @@ export class UserService {
 
   //#region Concernant la demande de devis
 
-  public getAllDemandeDevis() {
+  public getAllDemandesDevis() {
     let url: string = this._url([DEMANDES_DEVIS]);
     return this._client
       .get<IDemandeDevisModel[]>(url)

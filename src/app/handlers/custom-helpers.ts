@@ -1,5 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
+import {throwError} from 'rxjs';
+import {FormGroup, ValidationErrors} from "@angular/forms";
 
 export class CustomHelpers {
   public static handleError(error: HttpErrorResponse) {
@@ -13,5 +14,23 @@ export class CustomHelpers {
     }
     // return an observable with a user-facing error message
     return throwError(() => error);
+  }
+
+  public static handleStatus(error: ValidationErrors, submitted: boolean): "is-invalid" | "is-valid" | "" {
+    if (submitted && error) {
+      return 'is-invalid';
+    } else if (submitted && !error) {
+      return 'is-valid';
+    } else {
+      return '';
+    }
+  }
+
+  public static handleFormError(field: string, form: FormGroup, validation: string | null = null): ValidationErrors {
+    if (validation) {
+      return form.controls[field].errors[validation];
+    } else {
+      return form.controls[field].errors
+    }
   }
 }

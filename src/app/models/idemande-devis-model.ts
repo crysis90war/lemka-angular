@@ -1,18 +1,19 @@
-import { IMensurationModel, IServiceModel } from ".";
+import {IDevisModel, IMensurationModel, IServiceModel} from ".";
 
 export interface IDemandeDevisModel {
-  id:number;
-  utilisateurId:number;
-  numero:string;
-  titre:string;
-  remarque:string;
-  service:IServiceModel;
-  mensuration:IMensurationModel|null;
-  estUrgent:boolean;
-  createdAt:Date;
-  submitedAt:Date|null;
-  devisStatut:boolean|null;
-  devisDecision:boolean|null;
+  id: number;
+  utilisateurId: number;
+  numero: string;
+  titre: string;
+  remarque: string;
+  service: IServiceModel;
+  mensuration: IMensurationModel | null;
+  estUrgent: boolean;
+  createdAt: Date;
+  submittedAt: Date | null;
+  devisStatut: boolean | null;
+  devisDecision: boolean | null;
+  devis: IDevisModel|null;
 }
 
 /*

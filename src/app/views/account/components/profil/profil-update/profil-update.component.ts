@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {IAdresseForm, IUtilisateurForm} from "../../../../../models/forms";
 import {GenreService, UserService} from "../../../../../services/api";
 import {IAdresseModel, IGenreModel, UtilisateurModel} from "../../../../../models";
+import {FormConverters} from "../../../../../handlers/form-converters";
 
 @Component({
   selector: 'app-profil-test-update',
@@ -79,7 +80,7 @@ export class ProfilUpdateComponent implements OnInit {
   public submitUtilisateur() {
     this.utilisateurSubmitted = true;
     if (!this.utilisateurForm.valid) throw new Error("Le fomulaire n'est pas valide !");
-    this.utilisateur = this.convertToUtilisateur(this.utilisateurForm);
+    this.utilisateur = FormConverters.convertToUtilisateur(this.utilisateurForm);
     this._userService.updateUserProfil(this.utilisateur).subscribe({
       next: (res) => {
         this.setUtilisateur(res);
@@ -92,7 +93,7 @@ export class ProfilUpdateComponent implements OnInit {
   public submitAdresse() {
     this.adresseSubmitted = true;
     if (!this.adresseForm.valid) throw new Error("Le fomulaire n'est pas valide !");
-    this.adresse = this.convertToAdresse(this.adresseForm);
+    this.adresse = FormConverters.convertToAdresse(this.adresseForm);
     if (this.adresseExists) {
       this._userService.createUserAdresse(this.adresse).subscribe({
         next: (res) => {
@@ -109,27 +110,6 @@ export class ProfilUpdateComponent implements OnInit {
         },
         error: (error) => console.error(error)
       })
-    }
-  }
-
-  public convertToAdresse(fg: FormGroup): IAdresseForm {
-    return {
-      pays: fg.controls['pays'].value.trim(),
-      ville: fg.controls['ville'].value.trim(),
-      codePostal: fg.controls['codePostal'].value.trim(),
-      rue: fg.controls['rue'].value.trim(),
-      numero: fg.controls['numero'].value.trim(),
-      boite: fg.controls['boite'].value ? fg.controls['boite'].value.trim() : null,
-    };
-  }
-
-  public convertToUtilisateur(fg: FormGroup): IUtilisateurForm {
-    return {
-      username: fg.controls['username'].value.trim(),
-      genreId: fg.controls['genreId'].value ? parseInt(fg.controls['genreId'].value) : fg.controls['genreId'].value,
-      nom: fg.controls['nom'].value ? fg.controls['nom'].value.trim() : fg.controls['nom'].value,
-      prenom: fg.controls['prenom'].value ? fg.controls['prenom'].value.trim() : fg.controls['prenom'].value,
-      tel: fg.controls['tel'].value ? fg.controls['tel'].value.trim() : fg.controls['tel'].value,
     }
   }
 
