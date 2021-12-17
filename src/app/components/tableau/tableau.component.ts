@@ -13,6 +13,7 @@ interface ITableModel {
 export class TableauComponent implements OnInit {
   @Input() fields: ITableModel[] = [];
   @Input() items: any[] = [];
+  @Input() header: string;
 
   constructor() {
     console.table(this.items);

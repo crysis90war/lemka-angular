@@ -2,6 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../../../services/api";
 import {IDemandeDevisModel} from "../../../../../models";
 
+export enum StatutEnum {
+  EnCours,
+  Envoye,
+  EnTraitement,
+  Traite,
+  Archive
+}
+
 @Component({
   selector: 'app-demandes-devis-list',
   templateUrl: './demandes-devis-list.component.html',
@@ -10,6 +18,26 @@ import {IDemandeDevisModel} from "../../../../../models";
 export class DemandesDevisListComponent implements OnInit {
 
   public datas: IDemandeDevisModel[] = [];
+
+  public get demandesEnCours(): IDemandeDevisModel[] {
+    return this.datas.filter(e => this._statut(e, StatutEnum.EnCours));
+  }
+
+  public get demandesEnvoye(): IDemandeDevisModel[] {
+    return this.datas.filter(e => this._statut(e, StatutEnum.Envoye));
+  }
+
+  public get demandesEnTraitement(): IDemandeDevisModel[] {
+    return this.datas.filter(e => this._statut(e, StatutEnum.EnTraitement));
+  }
+
+  public get demandesTraite(): IDemandeDevisModel[] {
+    return this.datas.filter(e => this._statut(e, StatutEnum.Traite));
+  }
+
+  public get demandesArchive(): IDemandeDevisModel[] {
+    return this.datas.filter(e => this._statut(e, StatutEnum.Archive));
+  }
 
   public enCoursFields = [
     {key: 'createdAt', label: 'Créé le'},
@@ -21,14 +49,6 @@ export class DemandesDevisListComponent implements OnInit {
     {key: 'submittedAt', label: 'Envoyé le'},
     ...this.enCoursFields
   ]
-
-  public get demandesEnCours(): IDemandeDevisModel[] {
-    return this.datas.filter(this._enCours);
-  }
-
-  public get demandesEnTraitement(): IDemandeDevisModel[] {
-    return this.datas.filter(this._enTraitement);
-  }
 
   constructor(private _userService: UserService) {
   }
@@ -46,11 +66,25 @@ export class DemandesDevisListComponent implements OnInit {
     })
   }
 
-  private _enCours(element: IDemandeDevisModel, index, array) {
-    return (element.submittedAt === null);
-  }
-
-  private _enTraitement(element:IDemandeDevisModel, index, arr) {
-    return (element.devisStatut === false)
+  private _statut(element: IDemandeDevisModel, statut: StatutEnum) {
+    let result: boolean;
+    switch (statut) {
+      case StatutEnum.EnCours:
+        result = (element.submittedAt === null);
+        break;
+      case StatutEnum.Envoye:
+        result = (element.devisStatut === false)
+        break;
+      case StatutEnum.EnTraitement:
+        result = (element.devisStatut === false)
+        break;
+      case StatutEnum.Traite:
+        result = (element.devisStatut === false)
+        break;
+      case StatutEnum.Archive:
+        result = (element.devisStatut === false)
+        break;
+    }
+    return result;
   }
 }
