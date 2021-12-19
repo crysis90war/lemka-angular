@@ -42,7 +42,7 @@ export class UserService {
   ) {
   }
 
-  //#region Concernant le profil-test
+  //#region Concernant le profil
 
   public getUserProfil(): Observable<IUtilisateurModel> {
     let url: string = this._url();
@@ -69,21 +69,21 @@ export class UserService {
     let url: string = this._url([ADRESSE]);
     return this._client
       .post<IAdresseModel>(url, form)
-      .pipe(retry(2), catchError(CustomHelpers.handleError));
+      .pipe(retry(0), catchError(CustomHelpers.handleError));
   }
 
   public updateUserAdresse(form: IAdresseForm): Observable<IAdresseModel> {
     let url: string = this._url([ADRESSE]);
     return this._client
       .put<IAdresseModel>(url, form)
-      .pipe(retry(2), catchError(CustomHelpers.handleError));
+      .pipe(retry(0), catchError(CustomHelpers.handleError));
   }
 
   public deleteUserAdresse() {
     let url: string = this._url([ADRESSE]);
     return this._client
       .delete(url)
-      .pipe(retry(2), catchError(CustomHelpers.handleError));
+      .pipe(retry(0), catchError(CustomHelpers.handleError));
   }
 
   //#endregion
@@ -137,7 +137,7 @@ export class UserService {
     let url: string = this._url([DEMANDES_DEVIS]);
     return this._client
       .get<IDemandeDevisModel[]>(url)
-      .pipe(retry(2), catchError(CustomHelpers.handleError));
+      .pipe(retry(0), catchError(CustomHelpers.handleError));
   }
 
   public createDemandedevis(form: IDemandeDevisForm) {
@@ -145,6 +145,11 @@ export class UserService {
     return this._client
       .post<IDemandeDevisModel>(url, form)
       .pipe(retry(2), catchError(CustomHelpers.handleError));
+  }
+
+  public getDemandeDevisById(id:number):Observable<IDemandeDevisModel>{
+    let url:string = this._url([DEMANDES_DEVIS, id]);
+    return this._client.get<IDemandeDevisModel>(url).pipe(retry(0), catchError(CustomHelpers.handleError));
   }
 
   //#endregion

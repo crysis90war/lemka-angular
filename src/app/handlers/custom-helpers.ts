@@ -1,6 +1,8 @@
 import {HttpErrorResponse} from '@angular/common/http';
 import {throwError} from 'rxjs';
 import {FormGroup, ValidationErrors} from "@angular/forms";
+import {IDemandeDevisModel} from "../models";
+import {StatutEnum} from "../models/enums";
 
 export class CustomHelpers {
   public static handleError(error: HttpErrorResponse) {
@@ -32,5 +34,27 @@ export class CustomHelpers {
     } else {
       return form.controls[field].errors
     }
+  }
+
+  public static statutDemandeDevis(element: IDemandeDevisModel, statut: StatutEnum) {
+    let result: boolean;
+    switch (statut) {
+      case StatutEnum.EnCours:
+        result = (element.submittedAt === null);
+        break;
+      case StatutEnum.Envoye:
+        result = (element.submittedAt !== null && element.devisStatut === null);
+        break;
+      case StatutEnum.EnTraitement:
+        result = (element.devisStatut === false)
+        break;
+      case StatutEnum.Traite:
+        result = (element.devisStatut === true && element.devisDecision === null)
+        break;
+      case StatutEnum.Archive:
+        result = (element.devisStatut === false)
+        break;
+    }
+    return result;
   }
 }

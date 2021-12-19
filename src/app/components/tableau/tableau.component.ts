@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 interface ITableModel {
-  key:string;
-  label:string;
+  key: string;
+  label: string;
 }
 
 @Component({
@@ -16,7 +16,6 @@ export class TableauComponent implements OnInit {
   @Input() header: string;
 
   constructor() {
-    console.table(this.items);
   }
 
   ngOnInit(): void {
