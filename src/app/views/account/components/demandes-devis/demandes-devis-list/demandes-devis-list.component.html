@@ -47,7 +47,10 @@
       </div>
 
       <div class="tab-pane fade" id="sent" role="tabpanel" aria-labelledby="sent-tab">
-
+        <app-tableau [fields]="enTraitemenntFields"
+                     header="Liste des demandes de devis envoyés"
+                     [items]="demandesEnvoye">
+        </app-tableau>
       </div>
       <div class="tab-pane fade" id="working" role="tabpanel" aria-labelledby="working-tab">
         <app-tableau [fields]="enTraitemenntFields"
@@ -55,8 +58,18 @@
                      [items]="demandesEnTraitement">
         </app-tableau>
       </div>
-      <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab">...</div>
-      <div class="tab-pane fade" id="archive" role="tabpanel" aria-labelledby="archive-tab">...</div>
+      <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab">
+        <app-tableau [fields]="enCoursFields"
+                     header="Liste de devis récu pour vos demandes."
+                     [items]="demandesTraite">
+        </app-tableau>
+      </div>
+      <div class="tab-pane fade" id="archive" role="tabpanel" aria-labelledby="archive-tab">
+        <app-tableau [fields]="enCoursFields"
+                     header="Liste des demandes de devis archivés"
+                     [items]="demandesArchive">
+        </app-tableau>
+      </div>
     </div>
 
 

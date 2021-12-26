@@ -1,0 +1,70 @@
+<div class="double-list-box mt-2">
+  <div class="form-floating mb-1">
+    <input type="email"
+           class="form-control"
+           id="floatingInput"
+           placeholder="Titre ou reference">
+    <label for="floatingInput">Veuillez encoder pour chercher un produit.</label>
+  </div>
+
+  <div class="d-flex justify-content-around">
+    <div class="listbox overflow-auto" style="margin-right: 5px">
+      <ul class="list-group overflow-auto mt-2">
+        <ng-container  *ngIf="selectedItems.length > 0; else ngSinon">
+          <li *ngFor="let item of selectedItems" class="list-group-item">
+            <div class="row">
+              <div class="col-3">
+                <div class="text-center">
+                  <img [src]="item.image === null ? '../../../../assets/nocontent.png' : item.image" [alt]="item.slug" height="78" width="78"/>
+                </div>
+              </div>
+              <div class="col-7">
+                <p><strong>{{item.titre}}</strong></p>
+                <p>{{ item.prix }}</p>
+              </div>
+
+              <div class="col-2">
+                <button type="button" class="btn btn-danger p-1 h-100 w-100" (click)="removeItem(item)">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ng-container>
+        <ng-template #ngSinon>
+          <p class="text-center">Aucun produit ajouté.</p>
+        </ng-template>
+      </ul>
+    </div>
+
+    <div class="listbox overflow-auto" style="margin-left: 5px">
+      <ul class="list-group mt-2">
+        <ng-container  *ngIf="allItems.length > 0; else ngSinon">
+          <li *ngFor="let item of allItems" class="list-group-item">
+            <div class="row">
+              <div class="col-3">
+                <div class="text-center">
+                  <img [src]="item.image === null ? '../../../../assets/nocontent.png' : item.image" [alt]="item.slug" height="78" width="78"/>
+                </div>
+              </div>
+              <div class="col-7">
+                <p><strong>{{item.titre}}</strong></p>
+                <p>{{ item.prix }}</p>
+              </div>
+
+              <div class="col-2">
+                <button type="button" class="btn btn-success h-100" (click)="addItem(item)">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ng-container>
+        <ng-template #ngSinon>
+          <p class="text-center">Aucun produit trouvé.</p>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</div>
+

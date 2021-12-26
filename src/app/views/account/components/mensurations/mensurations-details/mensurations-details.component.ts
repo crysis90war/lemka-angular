@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {IMensurationModel} from "../../../../../models";
-import {IMesureModel} from "../../../../../models/imesure-model";
-import {UserService} from "../../../../../services/api";
+import {IMensurationModel} from "../../../../../core/models";
+import {IMesureModel} from "../../../../../core/models/imesure-model";
+import {UserService} from "../../../../../core/services/api";
 import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({

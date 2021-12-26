@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IFeature} from "../../models";
+import {IFeature} from "../../core/models";
 
 @Component({
   selector: 'app-feature',

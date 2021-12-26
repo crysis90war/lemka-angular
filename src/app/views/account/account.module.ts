@@ -12,23 +12,25 @@ import {TabMenuModule} from 'primeng/tabmenu';
 import {ImageModule} from 'primeng/image';
 import {CardComponent, FloatingInputComponent} from 'src/app/components';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ProfilDetailsComponent} from './components/profil/profil-details/profil-details.component';
-import {MensurationsListComponent} from './components/mensurations/mensurations-list/mensurations-list.component';
 import {AccountComponent} from "./account.component";
-import {ProfilUpdateComponent} from "./components/profil/profil-update/profil-update.component";
 import {FavorisComponent} from "./components/favoris/favoris.component";
 import {RendezVousListComponent} from './components/rendez-vous/rendez-vous-list/rendez-vous-list.component';
-import {
-  DemandesDevisListComponent
-} from './components/demandes-devis/demandes-devis-list/demandes-devis-list.component';
-import { MensurationsCreateComponent } from './components/mensurations/mensurations-create/mensurations-create.component';
-import { MensurationsDetailsComponent } from './components/mensurations/mensurations-details/mensurations-details.component';
-import { MensurationsUpdateComponent } from './components/mensurations/mensurations-update/mensurations-update.component';
 import {MesureFormInputComponent} from "../../components/mesure-form-input/mesure-form-input.component";
-import { DemandesDevisCreateComponent } from './components/demandes-devis/demandes-devis-create/demandes-devis-create.component';
-import { DemandesDevisDetailsComponent } from './components/demandes-devis/demandes-devis-details/demandes-devis-details.component';
-import { DemandesDevisUpdateComponent } from './components/demandes-devis/demandes-devis-update/demandes-devis-update.component';
 import {TableauComponent} from "../../components/tableau/tableau.component";
+import {DoubleListBoxComponent} from "../../components/double-list-box/double-list-box.component";
+import {ProfilDetailsComponent, ProfilUpdateComponent} from "./components/profil";
+import {
+  DemandesDevisCreateComponent,
+  DemandesDevisDetailsComponent,
+  DemandesDevisListComponent,
+  DemandesDevisUpdateComponent
+} from "./components/demandes-devis";
+import {
+  MensurationsCreateComponent,
+  MensurationsDetailsComponent,
+  MensurationsListComponent,
+  MensurationsUpdateComponent
+} from "./components/mensurations";
 
 @NgModule({
   declarations: [
@@ -55,21 +57,22 @@ import {TableauComponent} from "../../components/tableau/tableau.component";
     DemandesDevisCreateComponent,
     DemandesDevisDetailsComponent,
     DemandesDevisUpdateComponent,
-    TableauComponent
+    TableauComponent,
+    DoubleListBoxComponent
   ],
-    imports: [
-        CommonModule,
-        AccountRoutingModule,
-        ReactiveFormsModule,
-        SharedModule,
+  imports: [
+    CommonModule,
+    AccountRoutingModule,
+    ReactiveFormsModule,
+    SharedModule,
 
-        TabMenuModule,
-        ImageModule,
-        ButtonModule,
-        TabViewModule,
-        ProgressSpinnerModule,
-        RippleModule,
-    ],
+    TabMenuModule,
+    ImageModule,
+    ButtonModule,
+    TabViewModule,
+    ProgressSpinnerModule,
+    RippleModule,
+  ],
   bootstrap: [AccountComponent],
 })
 export class AccountModule {

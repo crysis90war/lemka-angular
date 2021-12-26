@@ -20,9 +20,20 @@ export class TableauComponent implements OnInit {
 
   ngOnInit(): void {
   }
-}
 
-/*
-* TODO - Fields Tableau Component
-*
-* */
+  public getLookupKeyValue(item: object, fieldKey: string): string {
+    let arr: string[] = fieldKey.split('__');
+    let objArr: any[] = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (i === 0) objArr.push(item[arr[i]]);
+      else {
+        objArr.push(objArr[i - 1][arr[i]]);
+      }
+    }
+    return objArr[objArr.length - 1];
+  }
+
+  public navigateTo(id: number, to: string): string {
+    return `../${id}/${to}`;
+  }
+}

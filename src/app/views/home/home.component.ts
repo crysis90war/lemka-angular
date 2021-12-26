@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IFeature } from 'src/app/models';
+import { IFeature } from 'src/app/core/models';
 import featuresJson from '../../_files/features.json';
 
 @Component({

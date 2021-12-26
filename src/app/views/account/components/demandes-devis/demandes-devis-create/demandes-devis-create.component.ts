@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {IDemandeDevisForm} from "../../../../../models/forms";
+import {IDemandeDevisForm} from "../../../../../core/models/forms";
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/forms";
-import {FormConverters} from "../../../../../handlers/form-converters";
-import {CustomHelpers} from "../../../../../handlers/custom-helpers";
+import {FormConverters} from "../../../../../core/handlers/form-converters";
+import {CustomHelpers} from "../../../../../core/handlers/custom-helpers";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../../../../services/api";
-import {IMensurationModel, IServiceModel} from "../../../../../models";
-import {ServiceService} from "../../../../../services/api/service.service";
+import {UserService} from "../../../../../core/services/api";
+import {IMensurationModel, IServiceModel} from "../../../../../core/models";
+import {ServiceService} from "../../../../../core/services/api/service.service";
+import {ProduitModel} from "../../../../../core/models/produit.model";
 
 @Component({
   selector: 'app-demandes-devis-create',
@@ -20,6 +21,8 @@ export class DemandesDevisCreateComponent implements OnInit {
 
   public services: IServiceModel[] = [];
   public mensurations: IMensurationModel[] = [];
+
+  public articles: ProduitModel[] = [];
 
   constructor(
     private _router: Router,

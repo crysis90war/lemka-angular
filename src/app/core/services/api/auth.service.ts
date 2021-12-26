@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ILoginForm, IRegisterForm } from 'src/app/models/forms';
-import { IToken } from 'src/app/models/itoken';
-import { ApiService } from '.';
-import { TokenStorageService } from '..';
+import { ILoginForm, IRegisterForm } from 'src/app/core/models/forms';
+import { IToken } from 'src/app/core/models/itoken';
+import { ApiService } from './index';
+import { TokenStorageService } from '../index';
 
 @Injectable({
   providedIn: 'root',

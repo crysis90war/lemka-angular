@@ -1,8 +1,7 @@
-import {IAdresseModel, IGenreModel} from ".";
+import {IAdresseModel, IGenreModel} from "./index";
 
 export interface IUtilisateurModel {
   id: number;
-  username: string;
   email: string;
   tel: string | null;
   image: string | null;
@@ -19,7 +18,6 @@ export interface IUtilisateurModel {
 
 /*
     public int Id { get; set; }
-    public string? Username { get; set; }
     public string? Email { get; set; }
     public string? Tel { get; set; }
     public string? Image { get; set; }

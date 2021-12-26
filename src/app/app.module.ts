@@ -4,7 +4,7 @@ import {CommonModule, registerLocaleData} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
 import {SharedModule} from './shared';
-import {HttpTokenInterceptor} from './interceptors';
+import {HttpTokenInterceptor} from './core/interceptors';
 import {BrowserModule} from '@angular/platform-browser';
 import localfrBe from '@angular/common/locales/fr-BE';
 
@@ -60,7 +60,7 @@ registerLocaleData(localfrBe);
     ProductCardTwoComponent,
     FeatureComponent,
     NavItemComponent,
-    NavDropdownComponent,
+    NavDropdownComponent
   ],
   imports: [
     CommonModule,
@@ -75,7 +75,7 @@ registerLocaleData(localfrBe);
     DemoRoutingModule,
     LegalesRoutingModule,
   ],
-    exports: [NavigationMenuComponent],
+  exports: [NavigationMenuComponent],
   providers: [
     {provide: LOCALE_ID, useValue: localfrBe},
     {provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true},

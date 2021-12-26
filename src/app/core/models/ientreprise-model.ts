@@ -1,4 +1,4 @@
-import { IAdresseModel } from '.';
+import { IAdresseModel } from './index';
 
 export interface IEntrepriseModel {
   nom: string;

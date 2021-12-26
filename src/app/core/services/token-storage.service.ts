@@ -52,7 +52,6 @@ export class TokenStorageService {
           'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid'
         ],
         email: decodedUser['email'],
-        username: decodedUser['username'],
         role: decodedUser['role'],
         statut: decodedUser['statut'],
       };

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../../../../services/api";
-import {IDemandeDevisModel} from "../../../../../models";
-import {StatutEnum} from "../../../../../models/enums";
-import {CustomHelpers} from "../../../../../handlers/custom-helpers";
+import {UserService} from "../../../../../core/services/api";
+import {IDemandeDevisModel} from "../../../../../core/models";
+import {StatutEnum} from "../../../../../core/models/enums";
+import {CustomHelpers} from "../../../../../core/handlers/custom-helpers";
 
 @Component({
   selector: 'app-demandes-devis-list',
@@ -35,7 +35,8 @@ export class DemandesDevisListComponent implements OnInit {
 
   public enCoursFields = [
     {key: 'createdAt', label: 'Créé le'},
-    {key: 'numero', label: 'Numero'},
+    {key: 'reference', label: 'Référence'},
+    {key: 'service__nom', label: 'Service'},
     {key: 'titre', label: 'Titre'},
   ];
 

@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/forms";
-import {IMesureModel} from "../../models/imesure-model";
-import {IMesureForm} from "../../models/forms/imesure-form";
-import {UserService} from "../../services/api";
+import {IMesureModel} from "../../core/models/imesure-model";
+import {IMesureForm} from "../../core/models/forms/imesure-form";
+import {UserService} from "../../core/services/api";
 
 @Component({
   selector: 'app-mesure-form-input',

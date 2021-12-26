@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../../../../services/api";
-import {IMensurationModel} from "../../../../../models";
+import {UserService} from "../../../../../core/services/api";
+import {IMensurationModel} from "../../../../../core/models";
 import {Router} from "@angular/router";
 
 @Component({

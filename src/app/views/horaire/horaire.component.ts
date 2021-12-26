@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IHoraireModel } from 'src/app/models/ihoraire-model';
-import { HoraireService } from 'src/app/services/api/horaire.service';
+import { IHoraireModel } from 'src/app/core/models/ihoraire-model';
+import { HoraireService } from 'src/app/core/services/api/horaire.service';
 
 @Component({
   selector: 'app-horaire',

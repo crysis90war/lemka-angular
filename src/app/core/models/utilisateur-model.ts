@@ -4,7 +4,6 @@ import {IGenreModel} from "./igenre-model";
 
 export class UtilisateurModel implements IUtilisateurModel {
   id: number;
-  username: string;
   email: string;
   tel: string | null;
   image: string | null;

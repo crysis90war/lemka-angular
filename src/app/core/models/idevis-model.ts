@@ -1,6 +1,6 @@
 export interface IDevisModel {
   id:number;
-  numero:string;
+  reference:string;
   remarque:string|null;
   estAccepte: boolean|null;
   totalTva?:number|null;
@@ -12,7 +12,7 @@ export interface IDevisModel {
 
 /**
  *     public int Id { get; set; }
- *     public string Numero { get; set; }
+ *     public string Reference { get; set; }
  *     public string? Remarque { get; set; }
  *     public bool? EstAccepte { get; set; }
  *     public decimal? TotalTva { get; set; }

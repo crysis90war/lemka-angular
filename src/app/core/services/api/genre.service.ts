@@ -1,8 +1,8 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {catchError, retry} from 'rxjs';
-import {CustomHelpers} from 'src/app/handlers/custom-helpers';
-import {IGenreModel} from 'src/app/models';
+import {CustomHelpers} from 'src/app/core/handlers/custom-helpers';
+import {IGenreModel} from 'src/app/core/models';
 import {environment} from 'src/environments/environment';
 
 const API_URL = environment.api_url;

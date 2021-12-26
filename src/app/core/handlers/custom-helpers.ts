@@ -49,10 +49,10 @@ export class CustomHelpers {
         result = (element.devisStatut === false)
         break;
       case StatutEnum.Traite:
-        result = (element.devisStatut === true && element.devisDecision === null)
+        result = (element.devisStatut === true && element.estArchive === false)
         break;
       case StatutEnum.Archive:
-        result = (element.devisStatut === false)
+        result = (element.estArchive === true)
         break;
     }
     return result;

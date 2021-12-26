@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IEntrepriseModel, ISocial } from 'src/app/models';
+import { IEntrepriseModel, ISocial } from 'src/app/core/models';
 import socielsJson from '../../_files/socials.json';
 import entrepriseJson from '../../_files/entreprise.json';
 

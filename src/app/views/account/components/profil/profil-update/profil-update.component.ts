@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {IAdresseForm, IUtilisateurForm} from "../../../../../models/forms";
-import {GenreService, UserService} from "../../../../../services/api";
-import {IAdresseModel, IGenreModel, UtilisateurModel} from "../../../../../models";
-import {FormConverters} from "../../../../../handlers/form-converters";
-import {CustomHelpers} from "../../../../../handlers/custom-helpers";
+import {IAdresseForm, IUtilisateurForm} from "../../../../../core/models/forms";
+import {GenreService, UserService} from "../../../../../core/services/api";
+import {IAdresseModel, IGenreModel, UtilisateurModel} from "../../../../../core/models";
+import {FormConverters} from "../../../../../core/handlers/form-converters";
+import {CustomHelpers} from "../../../../../core/handlers/custom-helpers";
 
 @Component({
   selector: 'app-profil-test-update',
@@ -45,15 +45,8 @@ export class ProfilUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this._initForm();
+    this._loadUser();
     this._loadGenres();
-
-    this._userService.getUserProfil().subscribe({
-      next: (res) => {
-        this.setUtilisateur(res);
-        this.setAdresse(res.adresse);
-      },
-      error: (error) => console.error(error),
-    })
   }
 
   public submitUtilisateur() {
@@ -92,35 +85,8 @@ export class ProfilUpdateComponent implements OnInit {
     }
   }
 
-  public statusInput(error: ValidationErrors, submitted: boolean) {
-    if (submitted && error) {
-      return 'is-invalid';
-    } else if (submitted && !error) {
-      return 'is-valid';
-    } else {
-      return '';
-    }
-  }
-
-  public formStatus(error: ValidationErrors, submitted: boolean): string {
-    return CustomHelpers.handleStatus(error, submitted);
-  }
-
-  public formControl(field: string, validation: string | null = null) {
-    return CustomHelpers.handleFormError(field, this.fg, validation);
-  }
-
-  public adresseControl(field: string, validation: string | null = null) {
-    return CustomHelpers.handleFormError(field, this.adresseForm, validation);
-  }
-
-  public utilisateurControl(field: string, validation: string | null = null) {
-    return CustomHelpers.handleFormError(field, this.utilisateurForm, validation);
-  }
-
   public setUtilisateur(values: UtilisateurModel): void {
     this.utilisateurForm.setValue({
-      username: values.username,
       prenom: values.prenom,
       nom: values.nom,
       tel: values.tel,
@@ -142,6 +108,22 @@ export class ProfilUpdateComponent implements OnInit {
     }
   }
 
+  public formStatus(error: ValidationErrors, submitted: boolean): string {
+    return CustomHelpers.handleStatus(error, submitted);
+  }
+
+  public formControl(field: string, validation: string | null = null) {
+    return CustomHelpers.handleFormError(field, this.fg, validation);
+  }
+
+  public adresseControl(field: string, validation: string | null = null) {
+    return CustomHelpers.handleFormError(field, this.adresseForm, validation);
+  }
+
+  public utilisateurControl(field: string, validation: string | null = null) {
+    return CustomHelpers.handleFormError(field, this.utilisateurForm, validation);
+  }
+
   private _initForm(): void {
     this.fg = this._formBuilder.group({
       adresse: this._formBuilder.group({
@@ -153,13 +135,22 @@ export class ProfilUpdateComponent implements OnInit {
         boite: [null, null],
       }),
       utilisateur: this._formBuilder.group({
-        username: [null, [Validators.required, Validators.maxLength(20)]],
+        prenom: [null, [Validators.required, Validators.maxLength(100)]],
+        nom: [null, [Validators.required, Validators.maxLength(100)]],
         tel: [null, [Validators.maxLength(20)]],
-        prenom: [null, [Validators.maxLength(50)]],
-        nom: [null, [Validators.maxLength(50)]],
         genreId: [null, null]
       })
     });
+  }
+
+  private _loadUser(): void {
+    this._userService.getUserProfil().subscribe({
+      next: (res) => {
+        this.setUtilisateur(res);
+        this.setAdresse(res.adresse);
+      },
+      error: (error) => console.error(error),
+    })
   }
 
   private _loadGenres(): void {

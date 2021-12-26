@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {
   DemandeDevisResolver,
   MensurationResolver
-} from "../../resolvers";
+} from "../../core/resolvers";
 
 import {NotFoundComponent} from '..';
 import {AccountComponent} from "./account.component";

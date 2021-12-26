@@ -1,5 +1,5 @@
 import { Time } from "@angular/common";
-import { IDevisModel, IServiceModel } from ".";
+import { IDevisModel, IServiceModel } from "./index";
 
 export interface IRendezVousModel {
   id:number;

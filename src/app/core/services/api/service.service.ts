@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {IServiceModel} from "../../models";
 import {catchError, retry} from "rxjs/operators";
 import {CustomHelpers} from "../../handlers/custom-helpers";
-import {environment} from "../../../environments/environment";
+import {environment} from "../../../../environments/environment";
 
 const API_URL = environment.api_url;
 

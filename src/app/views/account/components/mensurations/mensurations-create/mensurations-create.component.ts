@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from "@angular/forms";
-import {IMensurationForm} from "../../../../../models/forms";
+import {IMensurationForm} from "../../../../../core/models/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../../../../services/api";
-import {FormConverters} from "../../../../../handlers/form-converters";
-import {CustomHelpers} from "../../../../../handlers/custom-helpers";
+import {UserService} from "../../../../../core/services/api";
+import {FormConverters} from "../../../../../core/handlers/form-converters";
+import {CustomHelpers} from "../../../../../core/handlers/custom-helpers";
 
 @Component({
   selector: 'app-mensurations-create',

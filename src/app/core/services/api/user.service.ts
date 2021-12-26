@@ -7,20 +7,21 @@ import {TokenStorageService} from '../token-storage.service';
 
 import {
   IAdresseModel,
-  IDemandeDevisModel,
+  IDemandeDevisModel, IDevisModel,
   IMensurationModel,
   IRendezVousModel,
   IUtilisateurModel,
-} from 'src/app/models';
+} from 'src/app/core/models';
 import {
   IAdresseForm,
   IDemandeDevisForm,
   IMensurationForm,
   IUtilisateurForm,
-} from 'src/app/models/forms';
-import {CustomHelpers} from 'src/app/handlers/custom-helpers';
+} from 'src/app/core/models/forms';
+import {CustomHelpers} from 'src/app/core/handlers/custom-helpers';
 import {IMesureModel} from "../../models/imesure-model";
 import {IMesureForm} from "../../models/forms/imesure-form";
+import {IDetailModel} from "../../models/idetail-model";
 
 const API_URL = environment.api_url;
 const ADRESSE = 'Adresse';
@@ -51,7 +52,7 @@ export class UserService {
 
   public updateUserProfil(form: IUtilisateurForm): Observable<IUtilisateurModel> {
     let url: string = this._url();
-    return this._client.put<IUtilisateurModel>(url, form).pipe(retry(2), catchError(CustomHelpers.handleError));
+    return this._client.put<IUtilisateurModel>(url, form).pipe(retry(0), catchError(CustomHelpers.handleError));
   }
 
   public changePassword(oldPassword: string, newPassword: string) {
@@ -114,8 +115,8 @@ export class UserService {
     return this._client.put<IMensurationModel>(url, form).pipe(retry(1), catchError(CustomHelpers.handleError));
   }
 
-  public deleteMensuration(id:number) {
-    let url:string = this._url([MENSURATIONS, id]);
+  public deleteMensuration(id: number) {
+    let url: string = this._url([MENSURATIONS, id]);
     return this._client.delete(url).pipe(retry(0), catchError(CustomHelpers.handleError));
   }
 
@@ -147,9 +148,37 @@ export class UserService {
       .pipe(retry(2), catchError(CustomHelpers.handleError));
   }
 
-  public getDemandeDevisById(id:number):Observable<IDemandeDevisModel>{
-    let url:string = this._url([DEMANDES_DEVIS, id]);
+  public getDemandeDevisById(id: number): Observable<IDemandeDevisModel> {
+    let url: string = this._url([DEMANDES_DEVIS, id]);
     return this._client.get<IDemandeDevisModel>(url).pipe(retry(0), catchError(CustomHelpers.handleError));
+  }
+
+  public deleteDemandeDevis(id: number): Observable<any> {
+    let url: string = this._url([DEMANDES_DEVIS, id]);
+    return this._client.delete(url).pipe(retry(0), catchError(CustomHelpers.handleError));
+  }
+
+  public soumettreDemandeDevis(id: number): Observable<IDemandeDevisModel> {
+    let url: string = this._url([DEMANDES_DEVIS, id, 'Soumettre']);
+    return this._client.put<IDemandeDevisModel>(url, null).pipe(retry(0), catchError(CustomHelpers.handleError));
+  }
+
+  //#endregion
+
+  //#region Devis
+
+  public getDDDevis(ddId: number): Observable<IDevisModel> {
+    let url: string = this._url([DEMANDES_DEVIS, ddId, 'Devis']);
+    return this._client.get<IDevisModel>(url).pipe(retry(0), catchError(CustomHelpers.handleError));
+  }
+
+  //#endregion
+
+  //#region Details devis
+
+  public getDetails(ddId: number, dId: number): Observable<IDetailModel[]> {
+    let url: string = this._url([DEMANDES_DEVIS, ddId, 'Devis', dId, 'Details']);
+    return this._client.get<IDetailModel[]>(url).pipe(retry(0), catchError(CustomHelpers.handleError));
   }
 
   //#endregion

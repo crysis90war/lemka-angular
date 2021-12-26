@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { INavItem } from 'src/app/models';
-import { IToken } from 'src/app/models/itoken';
-import { AuthService } from 'src/app/services/api';
+import { INavItem } from 'src/app/core/models';
+import { IToken } from 'src/app/core/models/itoken';
+import { AuthService } from 'src/app/core/services/api';
 import navigationsJson from '../../_files/navigations.json';
 
 @Component({

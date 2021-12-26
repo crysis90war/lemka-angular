@@ -6,43 +6,6 @@
       <div class="card-body">
 
         <form [formGroup]="utilisateurForm" (ngSubmit)="submitUtilisateur()">
-          <div class="row mb-3">
-            <div class="col-lg-4">
-              <div class="form-floating has-validation">
-                <input type="text"
-                       class="form-control"
-                       id="floatingInputUsername"
-                       formControlName="username"
-                       [ngClass]="formStatus(utilisateurControl('username'), utilisateurSubmitted)"
-                       placeholder="Belgique">
-                <label for="floatingInputUsername">Username*</label>
-
-                <div class="invalid-feedback"
-                     *ngIf="(utilisateurForm.controls['username'].touched || utilisateurSubmitted) && utilisateurForm.controls['username'].invalid">
-                  <div *ngIf="utilisateurControl('username', 'required')">username requis</div>
-                  <div *ngIf="utilisateurControl('username', 'maxlength')">Maximum 20 caractères permis.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4">
-              <div class="form-floating has-validation">
-                <input type="text"
-                       class="form-control"
-                       id="floatingInputTel"
-                       formControlName="tel"
-                       [ngClass]="formStatus(utilisateurControl('tel'), utilisateurSubmitted)"
-                       placeholder="tel">
-                <label for="floatingInputTel">Tel</label>
-
-                <div
-                  *ngIf="(utilisateurForm.controls['tel'].touched || utilisateurSubmitted) && utilisateurForm.controls['tel'].invalid"
-                  class="invalid-feedback">
-                  <div *ngIf="utilisateurControl('tel', 'maxlength')">Maximum 20 caractères permis.</div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div class="row mb-3">
             <div class="col-lg-4">
@@ -53,11 +16,12 @@
                        formControlName="prenom"
                        [ngClass]="formStatus(utilisateurControl('prenom'), utilisateurSubmitted)"
                        placeholder="prenom">
-                <label for="floatingInputPrenom">Prénom</label>
+                <label for="floatingInputPrenom">Prénom*</label>
 
                 <div class="invalid-feedback"
                      *ngIf="(utilisateurForm.controls['prenom'].touched || utilisateurSubmitted) && utilisateurForm.controls['prenom'].invalid">
-                  <div *ngIf="utilisateurControl('prenom', 'maxlength')">Maximum 50 caractères permis.</div>
+                  <div *ngIf="utilisateurControl('prenom', 'required')">Prénom est requis.</div>
+                  <div *ngIf="utilisateurControl('prenom', 'maxlength')">Maximum 100 caractères permis.</div>
                 </div>
               </div>
             </div>
@@ -70,11 +34,12 @@
                        formControlName="nom"
                        [ngClass]="formStatus(utilisateurControl('nom'), utilisateurSubmitted)"
                        placeholder="nom">
-                <label for="floatingInputNom">Nom</label>
+                <label for="floatingInputNom">Nom*</label>
 
                 <div class="invalid-feedback"
                      *ngIf="(utilisateurForm.controls['nom'].touched || utilisateurSubmitted) && utilisateurForm.controls['nom'].invalid">
-                  <div *ngIf="utilisateurControl('nom', 'maxlength')">Maximum 50 caractères permis.</div>
+                  <div *ngIf="utilisateurControl('nom', 'required')">Nom est requis.</div>
+                  <div *ngIf="utilisateurControl('nom', 'maxlength')">Maximum 100 caractères permis.</div>
                 </div>
               </div>
             </div>
@@ -91,6 +56,27 @@
                   </ng-container>
                 </select>
                 <label for="floatingSelectGenre">Genre</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+
+            <div class="col-lg-4">
+              <div class="form-floating has-validation">
+                <input type="text"
+                       class="form-control"
+                       id="floatingInputTel"
+                       formControlName="tel"
+                       [ngClass]="formStatus(utilisateurControl('tel'), utilisateurSubmitted)"
+                       placeholder="tel">
+                <label for="floatingInputTel">Tel</label>
+
+                <div
+                  *ngIf="(utilisateurForm.controls['tel'].touched || utilisateurSubmitted) && utilisateurForm.controls['tel'].invalid"
+                  class="invalid-feedback">
+                  <div *ngIf="utilisateurControl('tel', 'maxlength')">Maximum 20 caractères permis.</div>
+                </div>
               </div>
             </div>
           </div>
@@ -113,7 +99,7 @@
             <div class="col-lg-4">
               <div class="form-floating has-validation">
                 <input type="text" class="form-control" id="floatingInputPays" placeholder="Belgique"
-                       formControlName="pays" [ngClass]="statusInput(adresseControl('pays'), adresseSubmitted)">
+                       formControlName="pays" [ngClass]="formStatus(adresseControl('pays'), adresseSubmitted)">
                 <label for="floatingInputPays">Pays*</label>
                 <div class="invalid-feedback"
                      *ngIf="(adresseForm.controls['pays'].touched || adresseSubmitted) && adresseForm.controls['pays'].invalid">
@@ -127,7 +113,7 @@
               <div class="form-floating has-validation">
                 <input type="text" class="form-control" id="floatingInputVille" placeholder="Bruxelles"
                        formControlName="ville"
-                       [ngClass]="statusInput(adresseControl('ville'), adresseSubmitted)">
+                       [ngClass]="formStatus(adresseControl('ville'), adresseSubmitted)">
                 <label for="floatingInputVille">Ville *</label>
                 <div class="invalid-feedback"
                      *ngIf="(adresseForm.controls['ville'].touched || adresseSubmitted) && adresseForm.controls['ville'].invalid">
@@ -141,7 +127,7 @@
               <div class="form-floating has-validation">
                 <input type="text" class="form-control" id="floatingInputCodePostal" placeholder="1000"
                        formControlName="codePostal"
-                       [ngClass]="statusInput(adresseControl('codePostal'), adresseSubmitted)">
+                       [ngClass]="formStatus(adresseControl('codePostal'), adresseSubmitted)">
                 <label for="floatingInputCodePostal">Code Postal *</label>
                 <div class="invalid-feedback"
                      *ngIf="(adresseForm.controls['codePostal'].touched || adresseSubmitted) && adresseForm.controls['codePostal'].invalid">
@@ -158,7 +144,7 @@
               <div class="form-floating has-validation">
                 <input type="text" class="form-control" id="floatingInputCodeRue" placeholder="Chaussée d'Ixelles"
                        formControlName="rue"
-                       [ngClass]="statusInput(adresseControl('rue'), adresseSubmitted)">
+                       [ngClass]="formStatus(adresseControl('rue'), adresseSubmitted)">
                 <label for="floatingInputCodeRue">Rue *</label>
                 <div class="invalid-feedback"
                      *ngIf="(adresseForm.controls['rue'].touched || adresseSubmitted) && adresseForm.controls['rue'].invalid">
@@ -172,7 +158,7 @@
               <div class="form-floating has-validation">
                 <input type="text" class="form-control" id="floatingInputNumero" placeholder="123a"
                        formControlName="numero"
-                       [ngClass]="statusInput(adresseControl('numero'), adresseSubmitted)">
+                       [ngClass]="formStatus(adresseControl('numero'), adresseSubmitted)">
                 <label for="floatingInputNumero">Numero *</label>
                 <div class="invalid-feedback"
                      *ngIf="(adresseForm.controls['numero'].touched || adresseSubmitted) && adresseForm.controls['numero'].invalid">

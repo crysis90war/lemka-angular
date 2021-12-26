@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IHoraireModel } from 'src/app/models/ihoraire-model';
+import { IHoraireModel } from 'src/app/core/models/ihoraire-model';
 import { environment } from 'src/environments/environment';
-import { ApiService } from '.';
+import { ApiService } from './index';
 
 const API_URL = environment.api_url;
 

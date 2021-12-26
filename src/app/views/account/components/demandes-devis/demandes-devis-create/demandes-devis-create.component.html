@@ -55,7 +55,7 @@
       </div>
 
       <ng-container *ngIf="fg.controls['serviceId'].value === '1' || fg.controls['serviceId'].value === '3'">
-        
+
         <hr>
         <h4 class="text-secondary mb4">Optionnel</h4>
         <hr>
@@ -74,7 +74,17 @@
           <label for="floatingSelectMensuration">Mensuration</label>
         </div>
 
+        <ng-container *ngIf="fg.controls['serviceId'].value === '1'">
+          Ajout d'articles
+        </ng-container>
+
       </ng-container>
+
+      <app-double-list-box [selectedItems]="articles"></app-double-list-box>
+
+      <ul>
+        <li *ngFor="let article of articles">{{article.titre}}</li>
+      </ul>
 
       <div class="btn-group mt-3">
         <button type="submit" class="btn btn-outline-success">Créer</button>

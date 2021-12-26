@@ -1,1 +1,9 @@
-<p>demandes-devis-details works!</p>
+<div class="container">
+  <app-card title="Mes demandes de devis">
+    <pre>{{demandeDevis | json}}</pre>
+
+    <pre *ngIf="devis">{{devis | json}}</pre>
+
+    <pre *ngIf="details">{{details | json}}</pre>
+  </app-card>
+</div>

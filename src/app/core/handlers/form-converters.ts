@@ -38,10 +38,9 @@ export class FormConverters {
 
   public static convertToUtilisateur(fg: FormGroup): IUtilisateurForm {
     return {
-      username: fg.controls['username'].value.trim(),
+      nom: fg.controls['nom'].value,
+      prenom: fg.controls['prenom'].value,
       genreId: fg.controls['genreId'].value ? parseInt(fg.controls['genreId'].value) : fg.controls['genreId'].value,
-      nom: fg.controls['nom'].value ? fg.controls['nom'].value.trim() : fg.controls['nom'].value,
-      prenom: fg.controls['prenom'].value ? fg.controls['prenom'].value.trim() : fg.controls['prenom'].value,
       tel: fg.controls['tel'].value ? fg.controls['tel'].value.trim() : fg.controls['tel'].value,
     }
   }

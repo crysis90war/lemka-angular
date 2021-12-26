@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IEntrepriseModel } from 'src/app/models';
+import { IEntrepriseModel } from 'src/app/core/models';
 import entrepriseJson from '../../_files/entreprise.json';
 
 //  ../../../_files/entreprise.json
