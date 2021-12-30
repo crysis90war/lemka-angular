@@ -12,6 +12,8 @@ interface ITableModel {
 })
 export class TableauComponent implements OnInit {
   @Input() fields: ITableModel[] = [];
+  @Input() update: boolean = false;
+  @Input() delete: boolean = false;
   @Input() items: any[] = [];
   @Input() header: string;
 

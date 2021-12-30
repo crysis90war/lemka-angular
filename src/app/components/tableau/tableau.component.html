@@ -2,9 +2,7 @@
   <caption>{{ header }}</caption>
   <thead>
   <tr>
-    <th *ngFor="let field of fields" scope="col">
-      {{ field.label }}
-    </th>
+    <th *ngFor="let field of fields" scope="col">{{ field.label }}</th>
     <th scope="col">Actions</th>
   </tr>
   </thead>
@@ -19,8 +17,17 @@
       </ng-template>
     </td>
     <td>
-      <a class="btn btn-outline-info" [routerLink]="navigateTo(item.id, 'details')"><i class="fas fa-eye"></i></a>
-      <ng-content></ng-content>
+      <div class="btn-group">
+        <a *ngIf="update" class="btn btn-outline-primary" [routerLink]="navigateTo(item.id, 'update')">
+          <i class="fas fa-edit"></i>
+        </a>
+        <a class="btn btn-outline-info" [routerLink]="navigateTo(item.id, 'details')">
+          <i class="fas fa-eye"></i>
+        </a>
+        <button *ngIf="delete" class="btn btn-outline-danger">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
     </td>
   </tr>
   </tbody>

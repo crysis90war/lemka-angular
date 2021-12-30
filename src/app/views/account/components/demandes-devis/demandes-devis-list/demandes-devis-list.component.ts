@@ -29,6 +29,10 @@ export class DemandesDevisListComponent implements OnInit {
     return this.datas.filter(e => CustomHelpers.statutDemandeDevis(e, StatutEnum.Traite));
   }
 
+  public get demandesAcceptes(): IDemandeDevisModel[] {
+    return this.datas.filter(e => CustomHelpers.statutDemandeDevis(e, StatutEnum.Accepted))
+  }
+
   public get demandesArchive(): IDemandeDevisModel[] {
     return this.datas.filter(e => CustomHelpers.statutDemandeDevis(e, StatutEnum.Archive));
   }

@@ -3,5 +3,6 @@ export enum StatutEnum {
   Envoye,
   EnTraitement,
   Traite,
+  Accepted,
   Archive
 }

@@ -9,6 +9,7 @@
           <i class="fas fa-pen-alt"></i>
         </button>
       </li>
+
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="sent-tab" data-bs-toggle="tab" data-bs-target="#sent" type="button"
                 role="tab" aria-controls="profile" aria-selected="false">
@@ -31,6 +32,13 @@
       </li>
 
       <li class="nav-item" role="presentation">
+        <button class="nav-link" id="accepted-tab" data-bs-toggle="tab" data-bs-target="#accepted" type="button"
+                role="tab" aria-controls="accepted" aria-selected="false">
+          <i class="fas fa-vote-yea"></i>
+        </button>
+      </li>
+
+      <li class="nav-item" role="presentation">
         <button class="nav-link" id="archive-tab" data-bs-toggle="tab" data-bs-target="#archive" type="button"
                 role="tab" aria-controls="contact" aria-selected="false">
           <i class="fas fa-archive"></i>
@@ -41,6 +49,7 @@
     <div class="tab-content p-3" id="myTabContent">
       <div class="tab-pane fade show active" id="creation" role="tabpanel" aria-labelledby="creation-tab">
         <app-tableau [fields]="enCoursFields"
+                     [update]="true"
                      header="Liste des demandes de devis en cours de rédaction"
                      [items]="demandesEnCours">
         </app-tableau>
@@ -52,18 +61,28 @@
                      [items]="demandesEnvoye">
         </app-tableau>
       </div>
+
       <div class="tab-pane fade" id="working" role="tabpanel" aria-labelledby="working-tab">
         <app-tableau [fields]="enTraitemenntFields"
                      header="Listes des demandes de devis en cours de traitement."
                      [items]="demandesEnTraitement">
         </app-tableau>
       </div>
+
       <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab">
         <app-tableau [fields]="enCoursFields"
                      header="Liste de devis récu pour vos demandes."
                      [items]="demandesTraite">
         </app-tableau>
       </div>
+
+      <div class="tab-pane fade" id="accepted" role="tabpanel" aria-labelledby="accepted-tab">
+        <app-tableau [fields]="enCoursFields"
+                     header="Liste des demandes traitées et acceptées."
+                     [items]="demandesAcceptes">
+        </app-tableau>
+      </div>
+
       <div class="tab-pane fade" id="archive" role="tabpanel" aria-labelledby="archive-tab">
         <app-tableau [fields]="enCoursFields"
                      header="Liste des demandes de devis archivés"
